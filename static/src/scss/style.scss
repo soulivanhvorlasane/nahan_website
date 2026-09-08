@@ -29,11 +29,42 @@ body.nahan-body {
 :lang(lo),
 html[lang*="lo"],
 .nahan-lang-lo {
-    font-family: $nahan-font-lao !important;
+    font-family: $nahan-font-lao;
 }
 
 .lao-text {
     font-family: $nahan-font-lao !important;
+}
+
+// CRITICAL: Ensure FontAwesome and Odoo icons are NEVER overwritten by Lao typography font rules
+.fa,
+.fas,
+.far,
+.fal,
+.fab,
+.fad,
+[class^="fa-"],
+[class*=" fa-"],
+i.fa,
+span.fa,
+.dropdown-icon-circle i,
+.phone-icon-circle i {
+    font-family: FontAwesome !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-variant: normal !important;
+    text-transform: none !important;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.oi,
+[class^="oi-"],
+[class*=" oi-"] {
+    font-family: 'odoo-ui-icons' !important;
+    font-style: normal !important;
+    font-weight: normal !important;
 }
 
 // Modern SaaS Navbar
@@ -215,6 +246,20 @@ html[lang*="lo"],
             font-size: 0.85rem;
             transition: all 0.2s ease;
             pointer-events: none;
+
+            svg {
+                display: block;
+                width: 15px;
+                height: 15px;
+                fill: #4F46E5;
+                transition: all 0.2s ease;
+            }
+
+            i, .fa, .fa-phone {
+                font-family: FontAwesome !important;
+                display: inline-block;
+                line-height: 1;
+            }
         }
 
         .phone-text {
@@ -228,8 +273,9 @@ html[lang*="lo"],
             background: #F8FAFC;
             .phone-icon-circle {
                 background: #4F46E5;
-                i {
+                i, svg {
                     color: #FFFFFF !important;
+                    fill: #FFFFFF !important;
                 }
             }
         }

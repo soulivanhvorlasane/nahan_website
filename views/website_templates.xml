@@ -1064,7 +1064,11 @@
 
                             <!-- Direct Click-to-Call Phone Number -->
                             <a t-attf-href="tel:#{tel_digits}" class="nahan-phone-link d-flex align-items-center text-decoration-none px-2 py-1 rounded-pill" title="Call Nahan.app Consultant">
-                                <span class="phone-icon-circle me-2"><i class="fa fa-phone text-primary"></i></span>
+                                <span class="phone-icon-circle me-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+                                    </svg>
+                                </span>
                                 <span class="phone-text fw-bold text-dark">+8562052746767</span>
                             </a>
 
@@ -1177,7 +1181,9 @@
 
                                 <!-- Mobile Direct Phone Link -->
                                 <a t-attf-href="tel:#{tel_digits}" class="btn btn-outline-primary rounded-pill py-2 fw-bold d-flex align-items-center justify-content-center gap-2 text-decoration-none">
-                                    <i class="fa fa-phone"></i>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/>
+                                    </svg>
                                     <span>+8562052746767</span>
                                 </a>
 
