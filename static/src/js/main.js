@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initActiveNav();
     initServicesDropdownHover();
     initBrandLogoNav();
+    initSearchModal();
 });
 
 /**
@@ -430,6 +431,22 @@ function initBrandLogoNav() {
                 }, 50);
             }
         });
+    });
+}
+
+/**
+ * 7. Search Modal Auto-focus Handler
+ * Ensures search input is immediately focused when modal is opened for seamless UX.
+ */
+function initSearchModal() {
+    const searchModal = document.getElementById('o_search_modal');
+    if (!searchModal) return;
+
+    searchModal.addEventListener('shown.bs.modal', () => {
+        const searchInput = searchModal.querySelector('input[name="search"], input[type="search"]');
+        if (searchInput) {
+            searchInput.focus();
+        }
     });
 }
 
