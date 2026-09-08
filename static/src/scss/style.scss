@@ -43,10 +43,10 @@ html[lang*="lo"],
 .fal,
 .fab,
 .fad,
-[class^="fa-"],
-[class*=" fa-"],
-i.fa,
-span.fa,
+[class^="fa-"]:not(.oi),
+[class*=" fa-"]:not(.oi),
+i.fa:not(.oi),
+span.fa:not(.oi),
 .dropdown-icon-circle i,
 .phone-icon-circle i {
     font-family: FontAwesome !important;
@@ -62,9 +62,11 @@ span.fa,
 .oi,
 [class^="oi-"],
 [class*=" oi-"] {
-    font-family: 'odoo-ui-icons' !important;
+    font-family: 'odoo_ui_icons' !important;
     font-style: normal !important;
     font-weight: normal !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 // Modern SaaS Navbar
@@ -255,10 +257,20 @@ span.fa,
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer !important;
 
+            svg,
+            .search-icon-svg {
+                width: 18px !important;
+                height: 18px !important;
+                stroke: #334155 !important;
+                stroke-width: 2.2 !important;
+                display: block !important;
+                transition: stroke 0.2s ease, transform 0.2s ease;
+            }
+
             .oi,
             .oi-search {
-                font-family: 'odoo-ui-icons' !important;
-                font-size: 1.05rem !important;
+                font-family: 'odoo_ui_icons' !important;
+                font-size: 1.1rem !important;
                 color: #334155 !important;
                 line-height: 1 !important;
                 width: auto !important;
@@ -271,6 +283,11 @@ span.fa,
                 border-color: #CBD5E1 !important;
                 color: #4F46E5 !important;
                 transform: translateY(-1px);
+
+                svg,
+                .search-icon-svg {
+                    stroke: #4F46E5 !important;
+                }
 
                 .oi,
                 .oi-search {
@@ -508,9 +525,19 @@ span.fa,
         line-height: 1 !important;
         text-decoration: none !important;
 
+        svg,
+        .search-icon-svg {
+            width: 17px !important;
+            height: 17px !important;
+            stroke: #334155 !important;
+            stroke-width: 2.2 !important;
+            display: block !important;
+            transition: stroke 0.2s ease;
+        }
+
         .oi,
         .oi-search {
-            font-family: 'odoo-ui-icons' !important;
+            font-family: 'odoo_ui_icons' !important;
             font-size: 1rem !important;
             color: #334155 !important;
         }
@@ -519,6 +546,12 @@ span.fa,
         &:active {
             background: #E2E8F0 !important;
             color: #4F46E5 !important;
+
+            svg,
+            .search-icon-svg {
+                stroke: #4F46E5 !important;
+            }
+
             .oi,
             .oi-search {
                 color: #4F46E5 !important;
@@ -1495,7 +1528,7 @@ span.fa,
 
                 .oi,
                 .oi-search {
-                    font-family: 'odoo-ui-icons' !important;
+                    font-family: 'odoo_ui_icons' !important;
                     font-size: 1.25rem !important;
                     color: #475569 !important;
                     transition: color 0.2s ease;
@@ -1582,7 +1615,7 @@ span.fa,
 
                 .oi,
                 .oi-search {
-                    font-family: 'odoo-ui-icons' !important;
+                    font-family: 'odoo_ui_icons' !important;
                     font-size: 1rem !important;
                 }
 

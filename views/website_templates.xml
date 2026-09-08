@@ -1053,15 +1053,25 @@
 
                         <!-- Header Right: Search, Phone Number, Language Switcher, Sign In, Contact Us Button -->
                         <div class="d-flex align-items-center gap-2 gap-xl-3 flex-shrink-0">
+                            <!-- Search Modal (Desktop & Mobile shared) -->
+                            <div class="modal fade css_editable_mode_hidden" id="o_search_modal" aria-hidden="true" tabindex="-1">
+                                <div class="modal-dialog modal-lg pt-5">
+                                    <div class="modal-content mt-5">
+                                        <t t-call="website.header_search_box_input">
+                                            <t t-set="_classes" t-valuef="input-group-lg"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Search Button (Modal Trigger) -->
                             <div class="nahan-search-container">
-                                <ul class="navbar-nav align-items-center mb-0 list-unstyled">
-                                    <t t-call="website.placeholder_header_search_box" t-nocache="The searchbox should not cache previous searches.">
-                                        <t t-set="_layout" t-valuef="modal"/>
-                                        <t t-set="_item_class" t-valuef="nav-item"/>
-                                        <t t-set="_button_classes" t-valuef="nahan-btn-search shadow-none"/>
-                                    </t>
-                                </ul>
+                                <a data-bs-target="#o_search_modal" data-bs-toggle="modal" role="button" title="Search" href="#" class="btn nahan-btn-search shadow-none o_not_editable">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="search-icon-svg">
+                                        <circle cx="11" cy="11" r="8"></circle>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                    </svg>
+                                </a>
                             </div>
 
                             <!-- Direct Click-to-Call Phone Number -->
@@ -1123,7 +1133,10 @@
                         <!-- Mobile Actions: Search Trigger & Mobile Hamburger Menu Button -->
                         <div class="d-flex align-items-center gap-2">
                             <a data-bs-target="#o_search_modal" data-bs-toggle="modal" role="button" title="Search" href="#" class="btn btn-sm nahan-btn-search shadow-none o_not_editable">
-                                <i class="oi oi-search"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="search-icon-svg">
+                                    <circle cx="11" cy="11" r="8"></circle>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                </svg>
                             </a>
                             <button class="navbar-toggler border-0 p-2 shadow-none rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#nahanMobileDrawer" aria-controls="nahanMobileDrawer" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
