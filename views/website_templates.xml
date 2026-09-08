@@ -9,6 +9,10 @@
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
             <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 
+            <!-- Favicon / Website Brand Icon -->
+            <link rel="shortcut icon" href="/nahan_website/static/src/img/logo.svg" type="image/svg+xml"/>
+            <link rel="icon" href="/nahan_website/static/src/img/logo.svg" type="image/svg+xml"/>
+
             <!-- Open Graph / Facebook Meta Tags -->
             <meta property="og:type" content="website"/>
             <meta property="og:title" t-att-content="seo_title or 'ERP Odoo 18 Laos | SME ERP, POS, Website &amp; TaxRIS Integration | Nahan'"/>
@@ -935,9 +939,9 @@
     <template id="nahan_brand_logo_override" inherit_id="website.option_header_brand_logo" name="Nahan Brand Logo Override" priority="50">
         <xpath expr="//a[@data-name='Navbar Logo']" position="replace">
             <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
-            <a data-name="Navbar Logo" href="/" t-attf-class="navbar-brand logo #{_link_class} d-flex align-items-center">
-                <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="comp.name or 'Nahan.app'"/>
-                <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-field="website.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="website.name"/>
+            <a data-name="Navbar Logo" href="/" t-attf-class="navbar-brand logo #{_link_class} d-flex align-items-center" title="Nahan.app - ERP Odoo 18 Solutions">
+                <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 44px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
+                <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 44px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                 <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 40px; width: auto;"/>
             </a>
         </xpath>
@@ -957,8 +961,8 @@
                     <div class="container-fluid px-lg-4 px-xl-5">
                         <!-- Brand Logo: auto uses company configured logo, clicks to / -->
                         <a class="navbar-brand d-flex align-items-center me-3 me-xl-4 py-1" href="/" title="Nahan.app - ERP Odoo 18 Solutions">
-                            <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="comp.name or 'Nahan.app'"/>
-                            <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-field="website.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="website.name"/>
+                            <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 44px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
+                            <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 44px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                             <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 40px; width: auto;"/>
                         </a>
 
@@ -1072,8 +1076,8 @@
                     <div class="container-fluid px-3 d-flex justify-content-between align-items-center">
                         <!-- Mobile Logo -->
                         <a class="navbar-brand d-flex align-items-center py-0" href="/" title="Nahan.app">
-                            <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 36px; width: auto;'}" role="img"/>
-                            <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-field="website.logo" t-options="{'widget': 'image', 'style': 'max-height: 36px; width: auto;'}" role="img"/>
+                            <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 36px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
+                            <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 36px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                             <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 32px; width: auto;"/>
                         </a>
 
@@ -1086,10 +1090,11 @@
                     <!-- Offcanvas Mobile Drawer -->
                     <div t-attf-class="offcanvas offcanvas-end nahan-mobile-drawer #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}" tabindex="-1" id="nahanMobileDrawer" aria-labelledby="nahanMobileDrawerLabel">
                         <div class="offcanvas-header border-bottom px-4 py-3">
-                            <div class="d-flex align-items-center">
-                                <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 34px; width: auto;'}" role="img"/>
+                            <a href="/" class="d-flex align-items-center text-decoration-none" title="Nahan.app">
+                                <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 34px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
+                                <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 34px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                                 <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 30px; width: auto;"/>
-                            </div>
+                            </a>
                             <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
 
@@ -1193,8 +1198,11 @@
                         <div class="row g-5">
                             <!-- Column 1: About Company -->
                             <div class="col-lg-4">
-                                <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'class': 'mb-3 footer-brand-logo', 'style': 'max-height: 48px; max-width: 180px;'}"/>
-                                <img t-else="" src="/nahan_website/static/src/img/logo.svg" t-att-alt="comp.name or 'Nahan.app'" style="height: 38px; filter: brightness(0) invert(1);" class="mb-3"/>
+                                <a href="/" class="d-inline-block text-decoration-none" title="Nahan.app">
+                                    <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" class="mb-3 footer-brand-logo" style="max-height: 48px; max-width: 180px;" t-att-alt="comp.name or 'Nahan.app'"/>
+                                    <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" class="mb-3 footer-brand-logo" style="max-height: 48px; max-width: 180px;" t-att-alt="website.name or 'Nahan.app'"/>
+                                    <img t-else="" src="/nahan_website/static/src/img/logo.svg" t-att-alt="comp.name or 'Nahan.app'" style="height: 38px; filter: brightness(0) invert(1);" class="mb-3"/>
+                                </a>
                                 <p class="small text-white-50">
                                     <span t-esc="comp.name or 'Nahan'"/> is the premier ERP Odoo consulting firm in Laos. We empower SMEs and startups with high-performance Odoo 18 implementations, POS retail systems, and TaxRIS API integration.
                                 </p>

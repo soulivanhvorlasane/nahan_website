@@ -45,9 +45,15 @@ html[lang*="lo"],
     z-index: 1030;
 
     .navbar-brand {
+        cursor: pointer !important;
         transition: transform 0.2s ease;
         &:hover {
             transform: scale(1.02);
+        }
+
+        img {
+            cursor: pointer !important;
+            pointer-events: auto;
         }
     }
 
@@ -158,6 +164,7 @@ html[lang*="lo"],
                     font-size: 0.95rem;
                     transition: all 0.18s ease;
                     flex-shrink: 0;
+                    pointer-events: none;
                 }
 
                 &:hover {
@@ -204,6 +211,7 @@ html[lang*="lo"],
             justify-content: center;
             font-size: 0.85rem;
             transition: all 0.2s ease;
+            pointer-events: none;
         }
 
         .phone-text {
@@ -324,6 +332,13 @@ html[lang*="lo"],
 // Mobile Navbar & Drawer
 .nahan-saas-mobile-navbar {
     z-index: 1030;
+    .navbar-brand {
+        cursor: pointer !important;
+        img {
+            cursor: pointer !important;
+            pointer-events: auto;
+        }
+    }
     .navbar-toggler {
         background: #F1F5F9;
         border-radius: 8px;
@@ -335,6 +350,15 @@ html[lang*="lo"],
 
 .nahan-mobile-drawer {
     width: 310px !important;
+    .offcanvas-header {
+        a, .navbar-brand {
+            cursor: pointer !important;
+            img {
+                cursor: pointer !important;
+                pointer-events: auto;
+            }
+        }
+    }
     .nahan-mobile-nav-list {
         .nav-link {
             font-size: 1.05rem;
@@ -1150,6 +1174,11 @@ html[lang*="lo"],
     color: #94A3B8;
     padding: 80px 0 30px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    .footer-brand-logo {
+        cursor: pointer !important;
+        pointer-events: auto;
+    }
 
     .footer-heading {
         color: #FFFFFF;
