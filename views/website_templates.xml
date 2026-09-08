@@ -1391,14 +1391,23 @@
 
                         <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
                             <p class="mb-0 text-white-50 small">
-                                &amp;copy; 2026 <span t-esc="comp.name if comp and comp.name else 'Nahan'"/>. All rights reserved. Powered by Odoo 18.
+                                &amp;copy; 2026 <span t-esc="comp.name if comp and comp.name else 'Nahan'"/>. <span t-if="is_lo">ສະຫງວນລິຂະສິດທັງໝົດ.</span><span t-else="">All rights reserved.</span>
                             </p>
                             <div class="d-flex gap-3 mt-3 mt-md-0 small">
-                                <a href="/about-us" class="text-white-50 text-decoration-none">About Us</a>
+                                <a t-attf-href="#{lang_prefix}/about-us" class="text-white-50 text-decoration-none">
+                                    <span t-if="is_lo">ກ່ຽວກັບພວກເຮົາ</span>
+                                    <span t-else="">About Us</span>
+                                </a>
                                 <span class="text-white-50">|</span>
-                                <a href="/services" class="text-white-50 text-decoration-none">Services</a>
+                                <a t-attf-href="#{lang_prefix}/services" class="text-white-50 text-decoration-none">
+                                    <span t-if="is_lo">ບໍລິການ</span>
+                                    <span t-else="">Services</span>
+                                </a>
                                 <span class="text-white-50">|</span>
-                                <a href="/contact-us" class="text-white-50 text-decoration-none">Contact Us</a>
+                                <a t-attf-href="#{lang_prefix}/contactus" class="text-white-50 text-decoration-none">
+                                    <span t-if="is_lo">ຕິດຕໍ່ພວກເຮົາ</span>
+                                    <span t-else="">Contact Us</span>
+                                </a>
                             </div>
                         </div>
                     </div>
