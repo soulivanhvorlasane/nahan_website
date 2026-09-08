@@ -4,6 +4,11 @@
     <!-- Custom Header Navigation with Bilingual Switcher -->
     <template id="nahan_header" inherit_id="website.layout" name="Nahan Header &amp; SEO Meta" priority="15">
         <xpath expr="//head" position="inside">
+            <!-- Google Fonts: Noto Sans Lao for crisp Lao typography + Plus Jakarta Sans for Latin -->
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+            <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+
             <!-- Open Graph / Facebook Meta Tags -->
             <meta property="og:type" content="website"/>
             <meta property="og:title" t-att-content="seo_title or 'ERP Odoo 18 Laos | SME ERP, POS, Website &amp; TaxRIS Integration | Nahan'"/>
@@ -941,14 +946,14 @@
     <!-- Nahan Modern SaaS Header (Desktop & Mobile) -->
     <template id="nahan_saas_header" inherit_id="website.layout" name="Nahan Modern SaaS Header" priority="40">
         <xpath expr="//header" position="replace">
-            <header id="top" data-anchor="true" class="o_header_standard" data-name="Header">
+            <header id="top" data-anchor="true" t-attf-class="o_header_standard #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}" data-name="Header">
                 <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
                 <t t-set="raw_phone" t-value="comp.phone if comp and comp.phone else '+8562052746767'"/>
                 <t t-set="clean_digits" t-value="''.join([c for c in raw_phone if c.isdigit()])"/>
                 <t t-set="tel_digits" t-value="'+856' + clean_digits[1:] if clean_digits.startswith('020') else ('+' + clean_digits if clean_digits.startswith('856') else ('+856' + clean_digits if clean_digits.startswith('20') else '+8562052746767'))"/>
 
                 <!-- 1. DESKTOP MODERN SAAS NAVBAR -->
-                <nav class="navbar navbar-expand-lg nahan-saas-navbar d-none d-lg-block sticky-top bg-white border-bottom shadow-sm">
+                <nav t-attf-class="navbar navbar-expand-lg nahan-saas-navbar d-none d-lg-block sticky-top bg-white border-bottom shadow-sm #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}">
                     <div class="container-fluid px-lg-4 px-xl-5">
                         <!-- Brand Logo: auto uses company configured logo, clicks to / -->
                         <a class="navbar-brand d-flex align-items-center me-3 me-xl-4 py-1" href="/" title="Nahan.app - ERP Odoo 18 Solutions">
@@ -961,16 +966,16 @@
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 nahan-nav-links gap-1 gap-xl-2">
                             <li class="nav-item">
                                 <a data-nav-key="home" t-attf-class="nav-link #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" href="/">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')">ໜ້າຫຼັກ</span>
-                                    <span t-else="">Home</span>
+                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໜ້າຫຼັກ</span>
+                                    <span t-else="" class="en-text">Home</span>
                                 </a>
                             </li>
 
                             <!-- Services Dropdown Menu -->
                             <li class="nav-item dropdown nahan-services-dropdown">
                                 <a data-nav-key="services" t-attf-class="nav-link dropdown-toggle d-flex align-items-center gap-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" href="/services" id="navbarServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການ</span>
-                                    <span t-else="">Services</span>
+                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການ</span>
+                                    <span t-else="" class="en-text">Services</span>
                                 </a>
                                 <ul class="dropdown-menu shadow-lg border-0 rounded-3 py-2 m-0" aria-labelledby="navbarServicesDropdown">
                                     <li>
@@ -978,12 +983,12 @@
                                             <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-th-large"></i></span>
                                             <div>
                                                 <div class="fw-semibold text-dark">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການທັງໝົດ</span>
-                                                    <span t-else="">All Services</span>
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການທັງໝົດ</span>
+                                                    <span t-else="" class="en-text">All Services</span>
                                                 </div>
                                                 <small class="text-muted">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ພາບລວມການບໍລິການ</span>
-                                                    <span t-else="">Overview of solutions</span>
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ພາບລວມການບໍລິການ</span>
+                                                    <span t-else="" class="en-text">Overview of solutions</span>
                                                 </small>
                                             </div>
                                         </a>
@@ -994,12 +999,12 @@
                                             <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-cubes"></i></span>
                                             <div>
                                                 <div class="fw-semibold text-dark">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ໂຊລູຊັນ ERP</span>
-                                                    <span t-else="">ERP Solutions</span>
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໂຊລູຊັນ ERP</span>
+                                                    <span t-else="" class="en-text">ERP Solutions</span>
                                                 </div>
                                                 <small class="text-muted">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕັ້ງ ແລະ ພັດທະນາ ERP</span>
-                                                    <span t-else="">Turnkey ERP implementation</span>
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕັ້ງ ແລະ ພັດທະນາ ERP</span>
+                                                    <span t-else="" class="en-text">Turnkey ERP implementation</span>
                                                 </small>
                                             </div>
                                         </a>
@@ -1009,12 +1014,12 @@
                                             <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-exchange"></i></span>
                                             <div>
                                                 <div class="fw-semibold text-dark">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ລະບົບເຊື່ອມຕໍ່ API</span>
-                                                    <span t-else="">API Integration</span>
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ລະບົບເຊື່ອມຕໍ່ API</span>
+                                                    <span t-else="" class="en-text">API Integration</span>
                                                 </div>
                                                 <small class="text-muted">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')">TaxRIS, ທະນາຄານ ແລະ ລະບົບອື່ນໆ</span>
-                                                    <span t-else="">TaxRIS &amp; 3rd-party APIs</span>
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">TaxRIS, ທະນາຄານ ແລະ ລະບົບອື່ນໆ</span>
+                                                    <span t-else="" class="en-text">TaxRIS &amp; 3rd-party APIs</span>
                                                 </small>
                                             </div>
                                         </a>
@@ -1024,14 +1029,14 @@
 
                             <li class="nav-item">
                                 <a data-nav-key="blog" t-attf-class="nav-link #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" href="/blog">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')">ບົດຄວາມ</span>
-                                    <span t-else="">Blog</span>
+                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບົດຄວາມ</span>
+                                    <span t-else="" class="en-text">Blog</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a data-nav-key="about" t-attf-class="nav-link #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" href="/about-us">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')">ກ່ຽວກັບພວກເຮົາ</span>
-                                    <span t-else="">About Us</span>
+                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ກ່ຽວກັບພວກເຮົາ</span>
+                                    <span t-else="" class="en-text">About Us</span>
                                 </a>
                             </li>
                         </ul>
@@ -1042,7 +1047,7 @@
                             <div class="nahan-lang-container">
                                 <t t-call="website.language_selector">
                                     <t t-set="flags" t-value="True"/>
-                                    <t t-set="_btn_class" t-valuef="btn btn-sm btn-outline-light text-dark border rounded-pill px-3 py-1 shadow-none fw-medium d-flex align-items-center gap-1"/>
+                                    <t t-set="_btn_class" t-valuef="btn btn-sm nahan-lang-btn rounded-pill px-3 py-1 shadow-none fw-medium d-flex align-items-center gap-1"/>
                                     <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end shadow border-0 mt-1"/>
                                 </t>
                             </div>
@@ -1055,15 +1060,15 @@
 
                             <!-- Contact Us Button (Primary Brand Color, Rounded, Modern SaaS) -->
                             <a data-nav-key="contact" href="/contactus" class="btn btn-nahan-cta rounded-pill px-3 px-xl-4 py-2 fw-bold text-white shadow-sm text-decoration-none">
-                                <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕໍ່ພວກເຮົາ</span>
-                                <span t-else="">Contact Us</span>
+                                <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
+                                <span t-else="" class="en-text">Contact Us</span>
                             </a>
                         </div>
                     </div>
                 </nav>
 
                 <!-- 2. RESPONSIVE MOBILE SAAS NAVBAR -->
-                <nav class="navbar navbar-light nahan-saas-mobile-navbar d-block d-lg-none bg-white border-bottom sticky-top shadow-sm py-2">
+                <nav t-attf-class="navbar navbar-light nahan-saas-mobile-navbar d-block d-lg-none bg-white border-bottom sticky-top shadow-sm py-2 #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}">
                     <div class="container-fluid px-3 d-flex justify-content-between align-items-center">
                         <!-- Mobile Logo -->
                         <a class="navbar-brand d-flex align-items-center py-0" href="/" title="Nahan.app">
@@ -1079,7 +1084,7 @@
                     </div>
 
                     <!-- Offcanvas Mobile Drawer -->
-                    <div class="offcanvas offcanvas-end nahan-mobile-drawer" tabindex="-1" id="nahanMobileDrawer" aria-labelledby="nahanMobileDrawerLabel">
+                    <div t-attf-class="offcanvas offcanvas-end nahan-mobile-drawer #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}" tabindex="-1" id="nahanMobileDrawer" aria-labelledby="nahanMobileDrawerLabel">
                         <div class="offcanvas-header border-bottom px-4 py-3">
                             <div class="d-flex align-items-center">
                                 <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 34px; width: auto;'}" role="img"/>
@@ -1093,8 +1098,8 @@
                             <ul class="navbar-nav nahan-mobile-nav-list mb-4">
                                 <li class="nav-item">
                                     <a data-nav-key="home" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" href="/">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')">ໜ້າຫຼັກ</span>
-                                        <span t-else="">Home</span>
+                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໜ້າຫຼັກ</span>
+                                        <span t-else="" class="en-text">Home</span>
                                     </a>
                                 </li>
 
@@ -1102,8 +1107,8 @@
                                 <li class="nav-item">
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a data-nav-key="services" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark flex-grow-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" href="/services">
-                                            <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການ</span>
-                                            <span t-else="">Services</span>
+                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການ</span>
+                                            <span t-else="" class="en-text">Services</span>
                                         </a>
                                         <button class="btn btn-sm text-secondary p-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#nahanMobileServicesSubmenu" aria-expanded="true" aria-controls="nahanMobileServicesSubmenu" aria-label="Toggle Services submenu">
                                             <i class="fa fa-chevron-down small"></i>
@@ -1112,38 +1117,38 @@
                                     <div class="collapse show ps-3 border-start ms-2 my-1" id="nahanMobileServicesSubmenu">
                                         <a data-nav-key="services-overview" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services">
                                             <i class="fa fa-th-large me-2 text-primary small"></i>
-                                            <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການທັງໝົດ</span>
-                                            <span t-else="">All Services</span>
+                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການທັງໝົດ</span>
+                                            <span t-else="" class="en-text">All Services</span>
                                         </a>
                                         <a data-nav-key="erp" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services#erp">
                                             <i class="fa fa-cubes me-2 text-primary small"></i>
-                                            <span t-if="'lo' in (request.context.get('lang') or '')">ໂຊລູຊັນ ERP</span>
-                                            <span t-else="">ERP Solutions</span>
+                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໂຊລູຊັນ ERP</span>
+                                            <span t-else="" class="en-text">ERP Solutions</span>
                                         </a>
                                         <a data-nav-key="api" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services#api">
                                             <i class="fa fa-exchange me-2 text-primary small"></i>
-                                            <span t-if="'lo' in (request.context.get('lang') or '')">ລະບົບເຊື່ອມຕໍ່ API</span>
-                                            <span t-else="">API Integration</span>
+                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ລະບົບເຊື່ອມຕໍ່ API</span>
+                                            <span t-else="" class="en-text">API Integration</span>
                                         </a>
                                     </div>
                                 </li>
 
                                 <li class="nav-item">
                                     <a data-nav-key="blog" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" href="/blog">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')">ບົດຄວາມ</span>
-                                        <span t-else="">Blog</span>
+                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບົດຄວາມ</span>
+                                        <span t-else="" class="en-text">Blog</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a data-nav-key="about" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" href="/about-us">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')">ກ່ຽວກັບພວກເຮົາ</span>
-                                        <span t-else="">About Us</span>
+                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ກ່ຽວກັບພວກເຮົາ</span>
+                                        <span t-else="" class="en-text">About Us</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a data-nav-key="contact" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'contact' or '/contact' in request.httprequest.path else ''}" href="/contactus">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕໍ່ພວກເຮົາ</span>
-                                        <span t-else="">Contact Us</span>
+                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
+                                        <span t-else="" class="en-text">Contact Us</span>
                                     </a>
                                 </li>
                             </ul>
@@ -1167,8 +1172,8 @@
 
                                 <!-- Mobile Contact Us Button -->
                                 <a href="/contactus" class="btn btn-nahan-cta rounded-pill py-2 fw-bold text-center text-white shadow-sm text-decoration-none">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕໍ່ພວກເຮົາ</span>
-                                    <span t-else="">Contact Us</span>
+                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
+                                    <span t-else="" class="en-text">Contact Us</span>
                                 </a>
                             </div>
                         </div>
