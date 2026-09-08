@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_lead_nahan_public,crm.lead.nahan.public,crm.model_crm_lead,base.group_public,0,0,1,0
+access_nahan_website_stats_user,nahan.website.stats.user,model_nahan_website_stats,base.group_user,1,1,1,1
+access_nahan_website_stats_public,nahan.website.stats.public,model_nahan_website_stats,base.group_public,1,0,0,0

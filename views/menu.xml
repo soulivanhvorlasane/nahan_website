@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Primary Navigation Menu Structure for Nahan.app -->
+
+    <!-- 2. Services (Dropdown Parent) -->
+    <record id="menu_services" model="website.menu">
+        <field name="name">Services</field>
+        <field name="url">/services</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">20</field>
+    </record>
+
+    <!-- Submenu 2.1: ERP Solutions (Under Services) -->
+    <record id="menu_erp_solutions" model="website.menu">
+        <field name="name">ERP Solutions</field>
+        <field name="url">/services#erp</field>
+        <field name="parent_id" ref="nahan_website.menu_services"/>
+        <field name="sequence" type="int">10</field>
+    </record>
+
+    <!-- Submenu 2.2: API Integration (Under Services) -->
+    <record id="menu_taxris_integration" model="website.menu">
+        <field name="name">API Integration</field>
+        <field name="url">/services#api</field>
+        <field name="parent_id" ref="nahan_website.menu_services"/>
+        <field name="sequence" type="int">20</field>
+    </record>
+
+    <!-- 3. Blog -->
+    <record id="menu_blog" model="website.menu">
+        <field name="name">Blog</field>
+        <field name="url">/blog</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">30</field>
+    </record>
+
+    <!-- 4. About Us -->
+    <record id="menu_about" model="website.menu">
+        <field name="name">About Us</field>
+        <field name="url">/about-us</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">40</field>
+    </record>
+
+    <!-- 5. Contact Us -->
+    <record id="menu_contact" model="website.menu">
+        <field name="name">Contact Us</field>
+        <field name="url">/contactus</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">50</field>
+    </record>
+</odoo>

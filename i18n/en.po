@@ -1,0 +1,202 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nahan_website
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-08 12:40+0000\n"
+"PO-Revision-Date: 2026-09-08 12:40+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: nahan_website
+#: model:ir.model.fields,field_description:nahan_website.field_nahan_website_stats__projects_completed
+msgid "Projects Completed"
+msgstr "Projects Completed"
+
+#. module: nahan_website
+#: model:ir.model.fields,field_description:nahan_website.field_nahan_website_stats__happy_clients
+msgid "Happy Clients"
+msgstr "Happy Clients"
+
+#. module: nahan_website
+#: model:ir.model.fields,field_description:nahan_website.field_nahan_website_stats__odoo_modules
+msgid "Odoo Modules"
+msgstr "Odoo Modules"
+
+#. module: nahan_website
+#: model:ir.model.fields,field_description:nahan_website.field_nahan_website_stats__support_hours
+msgid "Support Availability"
+msgstr "Support Availability"
+
+#. module: nahan_website
+#: model:ir.model.fields,field_description:nahan_website.field_nahan_website_stats__name
+msgid "Configuration Name"
+msgstr "Configuration Name"
+
+#. module: nahan_website
+#: model:ir.ui.menu,name:nahan_website.menu_nahan_website_stats
+msgid "Nahan Statistics"
+msgstr "Nahan Statistics"
+
+#. module: nahan_website
+#: model:ir.actions.act_window,name:nahan_website.action_nahan_website_stats
+msgid "Website Statistics"
+msgstr "Website Statistics"
+
+#. module: nahan_website
+#: code:addons/nahan_website/controllers/main.py:0
+msgid "ERP Odoo 18 Laos | SME ERP, POS, Website & TaxRIS Integration | Nahan"
+msgstr "ERP Odoo 18 Laos | SME ERP, POS, Website & TaxRIS Integration | Nahan"
+
+#. module: nahan_website
+#: code:addons/nahan_website/controllers/main.py:0
+msgid "ERP Odoo 18 ລາວ | POS, Website, TaxRIS Integration ສຳລັບ SMEs | Nahan"
+msgstr "ERP Odoo 18 ລາວ | POS, Website, TaxRIS Integration ສຳລັບ SMEs | Nahan"
+
+#. module: nahan_website
+#: code:addons/nahan_website/controllers/main.py:0
+msgid "Nahan.app provides Odoo 18 ERP implementation, POS, Accounting, CRM, Inventory Management, Website Development, eCommerce and TaxRIS API Integration for SMEs and Startups in Laos."
+msgstr "Nahan.app provides Odoo 18 ERP implementation, POS, Accounting, CRM, Inventory Management, Website Development, eCommerce and TaxRIS API Integration for SMEs and Startups in Laos."
+
+#. module: nahan_website
+#: code:addons/nahan_website/controllers/main.py:0
+msgid "Nahan.app ໃຫ້ບໍລິການ ERP Odoo 18 ສຳລັບ SME ແລະ Startup ໃນລາວ ພ້ອມ POS, CRM, Accounting, Website ແລະ TaxRIS API Integration."
+msgstr "Nahan.app ໃຫ້ບໍລິການ ERP Odoo 18 ສຳລັບ SME ແລະ Startup ໃນລາວ ພ້ອມ POS, CRM, Accounting, Website ແລະ TaxRIS API Integration."
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "ERP Odoo 18 for SMEs and Startups in Laos"
+msgstr "ERP Odoo 18 for SMEs and Startups in Laos"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Modern business management solutions powered by Odoo 18."
+msgstr "Modern business management solutions powered by Odoo 18."
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Request Consultation"
+msgstr "Request Consultation"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Schedule Demo"
+msgstr "Schedule Demo"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "ERP Implementation"
+msgstr "ERP Implementation"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Odoo Customization"
+msgstr "Odoo Customization"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "POS Solutions"
+msgstr "POS Solutions"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Accounting"
+msgstr "Accounting"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "CRM"
+msgstr "CRM"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Inventory"
+msgstr "Inventory"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Website"
+msgstr "Website"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "eCommerce"
+msgstr "eCommerce"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "TaxRIS API"
+msgstr "TaxRIS API"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Local Lao Expertise"
+msgstr "Local Lao Expertise"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Odoo Specialists"
+msgstr "Odoo Specialists"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "TaxRIS Integration"
+msgstr "TaxRIS Integration"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Long-Term Support"
+msgstr "Long-Term Support"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Modern Technology"
+msgstr "Modern Technology"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Support Hours"
+msgstr "Support Hours"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Home"
+msgstr "Home"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Services"
+msgstr "Services"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Odoo 18"
+msgstr "Odoo 18"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "ERP Solutions"
+msgstr "ERP Solutions"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "About Us"
+msgstr "About Us"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Blog"
+msgstr "Blog"
+
+#. module: nahan_website
+#: model_terms:ir.ui.view,arch_db:nahan_website.homepage
+msgid "Contact Us"
+msgstr "Contact Us"

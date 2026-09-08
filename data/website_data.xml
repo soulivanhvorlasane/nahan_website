@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default CRM Tags for Inquiries -->
+        <record id="crm_tag_website_lead" model="crm.tag">
+            <field name="name">Website Lead</field>
+            <field name="color">1</field>
+        </record>
+
+        <record id="crm_tag_nahan_consultation" model="crm.tag">
+            <field name="name">Nahan Consultation</field>
+            <field name="color">4</field>
+        </record>
+
+        <record id="crm_tag_taxris_inquiry" model="crm.tag">
+            <field name="name">TaxRIS Inquiry</field>
+            <field name="color">7</field>
+        </record>
+
+        <!-- Default Dynamic Website Statistics Record -->
+        <record id="nahan_default_website_stats" model="nahan.website.stats">
+            <field name="name">Nahan.app Live Statistics</field>
+            <field name="projects_completed">20+</field>
+            <field name="happy_clients">15+</field>
+            <field name="odoo_modules">10+</field>
+            <field name="support_hours">24/7</field>
+            <field name="active">True</field>
+        </record>
+    </data>
+
+    <!-- Automatically clean duplicate menus and configure required navigation & homepage SEO -->
+    <function model="nahan.website.stats" name="cleanup_duplicate_menus"/>
+
+</odoo>

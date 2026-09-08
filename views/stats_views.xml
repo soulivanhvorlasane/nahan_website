@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_nahan_website_stats_tree" model="ir.ui.view">
+        <field name="name">nahan.website.stats.list</field>
+        <field name="model">nahan.website.stats</field>
+        <field name="arch" type="xml">
+            <list string="Website Statistics">
+                <field name="name"/>
+                <field name="projects_completed"/>
+                <field name="happy_clients"/>
+                <field name="odoo_modules"/>
+                <field name="support_hours"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_nahan_website_stats_form" model="ir.ui.view">
+        <field name="name">nahan.website.stats.form</field>
+        <field name="model">nahan.website.stats</field>
+        <field name="arch" type="xml">
+            <form string="Nahan Website Statistics">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Configuration Name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Nahan.app Live Statistics"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Counters Configuration">
+                            <field name="projects_completed" placeholder="e.g. 20+"/>
+                            <field name="happy_clients" placeholder="e.g. 15+"/>
+                            <field name="odoo_modules" placeholder="e.g. 10+"/>
+                            <field name="support_hours" placeholder="e.g. 24/7"/>
+                        </group>
+                        <group string="Settings">
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <div class="alert alert-info" role="alert">
+                        <strong>Live Sync:</strong> Changing these values updates the counters and animations on the Nahan.app homepage automatically.
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Window Action -->
+    <record id="action_nahan_website_stats" model="ir.actions.act_window">
+        <field name="name">Website Statistics</field>
+        <field name="res_model">nahan.website.stats</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Manage your live homepage statistics counters!
+            </p>
+            <p>
+                Configure the Projects Completed, Happy Clients, Odoo Modules, and Support Hours displayed on your website.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item under Website Configuration -->
+    <menuitem id="menu_nahan_website_stats"
+              name="Nahan Statistics"
+              parent="website.menu_website_configuration"
+              action="action_nahan_website_stats"
+              sequence="95"/>
+
+</odoo>

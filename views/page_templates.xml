@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================== -->
+    <!-- SERVICES DETAILED PAGE                         -->
+    <!-- ============================================== -->
+    <template id="services_page" name="Our Services - Nahan.app Odoo 18">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Our Services | Odoo 18 ERP &amp; TaxRIS Solutions in Laos | Nahan.app</t>
+            <div id="wrap" class="nahan-body">
+
+                <!-- Services Hero -->
+                <section class="nahan-hero-section py-5">
+                    <div class="container text-center py-4">
+                        <span class="hero-badge">Full Spectrum ERP &amp; Integrations</span>
+                        <h1 class="hero-title mt-2">
+                            <span>Tailored Odoo 18 Solutions for</span> <span class="text-gradient">Lao Enterprises</span>
+                        </h1>
+                        <p class="hero-subtitle mx-auto">
+                            Transforming manual operations into synchronized digital workflows. We provide end-to-end consulting, customization, and Lao national tax integration.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- In-depth Services Detail Section -->
+                <section class="py-5" id="odoo18">
+                    <div class="container py-4">
+                        <!-- 1. ERP Implementation Breakdown (#erp) -->
+                        <div class="row align-items-center g-5 mb-5 p-4 p-lg-5 rounded-4 bg-white border shadow-sm" id="erp">
+                            <div class="col-lg-6 order-lg-2">
+                                <span class="section-eyebrow">Enterprise Core</span>
+                                <h2 class="fw-bold text-dark mt-2 mb-3">Turnkey Odoo 18 ERP Implementation</h2>
+                                <p class="text-muted">
+                                    A successful ERP project requires more than installing software—it requires aligning technology with human workflows. We guide your team from legacy systems to a unified Odoo platform.
+                                </p>
+                                <div class="row g-3 mt-1">
+                                    <div class="col-sm-6">
+                                        <div class="p-3 bg-light rounded">
+                                            <h6 class="fw-bold text-dark mb-1">Standardized Chart of Accounts</h6>
+                                            <p class="small text-muted mb-0">Pre-configured with standard Lao accounting accounts.</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-3 bg-light rounded">
+                                            <h6 class="fw-bold text-dark mb-1">Data Migration</h6>
+                                            <p class="small text-muted mb-0">Clean import of legacy products, customers, and opening balances.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 order-lg-1 text-center">
+                                <div class="p-4 bg-light rounded-4 border">
+                                    <i class="fa fa-cubes text-primary" style="font-size: 4rem;"></i>
+                                    <h4 class="fw-bold mt-3">Full Suite ERP</h4>
+                                    <p class="text-muted small">Sales • Inventory • Accounting • Purchasing • HR</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. TaxRIS & API Integration Feature Highlight (#api / #taxris) -->
+                        <div class="row align-items-center g-5 mb-5 p-4 p-lg-5 rounded-4 bg-white border shadow-sm" id="taxris">
+                            <span id="api" class="d-none"></span>
+                            <div class="col-lg-6">
+                                <span class="section-eyebrow">National Tax &amp; API Connectivity</span>
+                                <h2 class="fw-bold text-dark mt-2 mb-3">Lao TaxRIS &amp; API Integration</h2>
+                                <p class="text-muted">
+                                    The Lao Tax Department (Ministry of Finance) requires companies to issue electronic tax invoices connected to the TaxRIS system.
+                                    Our battle-tested Odoo 18 connector guarantees your business stays 100% legally compliant.
+                                </p>
+                                <ul class="list-unstyled text-muted">
+                                    <li class="mb-2"><i class="fa fa-check text-success me-2"></i>Real-time invoice synchronization with TaxRIS API endpoints</li>
+                                    <li class="mb-2"><i class="fa fa-check text-success me-2"></i>Automated generation of official TaxRIS QR code on POS receipts</li>
+                                    <li class="mb-2"><i class="fa fa-check text-success me-2"></i>Multi-currency VAT calculation compliant with Lao tax brackets</li>
+                                    <li class="mb-2"><i class="fa fa-check text-success me-2"></i>Direct export for monthly and quarterly Lao tax declarations</li>
+                                </ul>
+                                <a href="/contact-us" class="btn btn-nahan-primary mt-2">
+                                    Request API &amp; TaxRIS Demo
+                                </a>
+                            </div>
+                            <div class="col-lg-6 text-center">
+                                <img src="/nahan_website/static/src/img/taxris_badge.svg" alt="TaxRIS API Lao Integration" style="max-width: 240px;" class="img-fluid mb-3 d-block mx-auto"/>
+                                <div class="p-3 bg-light rounded text-start small border">
+                                    <code class="text-primary font-monospace">// TaxRIS API Sync Payload Sample</code>
+                                    <pre class="mt-2 mb-0" style="font-size: 11px; background: #0A2540; color: #38BDF8; padding: 12px; border-radius: 6px;">
+POST /api/v1/einvoice/issue
+{
+  "tin": "0100234567-000",
+  "invoice_no": "INV/2026/0042",
+  "currency": "LAK",
+  "tax_amount": 350000.0,
+  "status": "APPROVED_BY_TAXRIS"
+}</pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- POS & Retail Solutions -->
+                        <div class="row align-items-center g-5 mb-5 p-4 p-lg-5 rounded-4 bg-white border shadow-sm" id="pos">
+                            <div class="col-lg-6">
+                                <span class="section-eyebrow">Retail &amp; Hospitality</span>
+                                <h2 class="fw-bold text-dark mt-2 mb-3">Modern POS &amp; Store Management</h2>
+                                <p class="text-muted">
+                                    Whether you run a single boutique or a multi-branch supermarket chain in Laos, our Odoo 18 POS setup provides lightning-fast checkout, barcode scanning, and multi-till control.
+                                </p>
+                                <ul class="list-unstyled text-muted">
+                                    <li class="mb-2"><i class="fa fa-check text-success me-2"></i>Works offline during internet drops; automatically syncs when reconnected</li>
+                                    <li class="mb-2"><i class="fa fa-check text-success me-2"></i>Integrated Lao QR code payment on customer-facing screens</li>
+                                    <li class="mb-2"><i class="fa fa-check text-success me-2"></i>Real-time stock deduction and low-stock alerts</li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-6 text-center">
+                                <div class="p-4 bg-light rounded-4 border">
+                                    <i class="fa fa-desktop text-success" style="font-size: 4rem;"></i>
+                                    <h4 class="fw-bold mt-3">Odoo 18 Point of Sale</h4>
+                                    <p class="text-muted small">Retail Counters • Table Management • Kitchen Printing</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Call to action -->
+                <div class="container mb-5">
+                    <div class="nahan-cta-banner text-center">
+                        <h2 class="cta-title">Ready to Discuss Your Project?</h2>
+                        <p class="cta-subtitle mx-auto">Contact our team in Vientiane for a detailed scope of work and consultation.</p>
+                        <div class="mt-4">
+                            <a href="/contact-us" class="btn btn-nahan-primary btn-lg shadow px-5">Get in Touch</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- ============================================== -->
+    <!-- ABOUT US PAGE                                  -->
+    <!-- ============================================== -->
+    <template id="about_page" name="About Us - Nahan.app Odoo 18">
+        <t t-call="website.layout">
+            <t t-set="additional_title">About Nahan.app | Leading Odoo 18 ERP Specialists in Laos</t>
+            <div id="wrap" class="nahan-body">
+
+                <!-- About Hero -->
+                <section class="nahan-hero-section py-5">
+                    <div class="container text-center py-4">
+                        <span class="hero-badge">Empowering Lao Business</span>
+                        <h1 class="hero-title mt-2">
+                            <span>About</span> <span class="text-gradient">Nahan.app</span>
+                        </h1>
+                        <p class="hero-subtitle mx-auto">
+                            We are passionate technologists based in Vientiane, dedicated to helping Lao SMEs and startups build world-class operational foundations using Odoo 18.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Company Story & Mission -->
+                <section class="py-5">
+                    <div class="container py-4">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-6">
+                                <span class="section-eyebrow">Our Mission</span>
+                                <h2 class="fw-bold text-dark mt-2 mb-3">Bridge Global Tech with Lao Business Culture</h2>
+                                <p class="text-muted">
+                                    Nahan.app was founded to address a critical gap: while international enterprise ERP systems exist, few are tailored to the multi-currency realities, Lao tax regulations (TaxRIS), and local operating methods of Lao enterprises.
+                                </p>
+                                <p class="text-muted">
+                                    Our certified team of Lao developers and ERP consultants crafts systems that your staff love to use every day—with interfaces and training available in both Lao and English.
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="row g-3">
+                                    <div class="col-sm-6">
+                                        <div class="p-4 bg-white rounded-3 border shadow-sm text-center h-100">
+                                            <h3 class="fw-bold text-primary mb-1">50+</h3>
+                                            <p class="text-muted mb-0 small">Enterprise Projects Delivered</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-4 bg-white rounded-3 border shadow-sm text-center h-100">
+                                            <h3 class="fw-bold text-info mb-1">100%</h3>
+                                            <p class="text-muted mb-0 small">Lao TaxRIS Compliance</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-4 bg-white rounded-3 border shadow-sm text-center h-100">
+                                            <h3 class="fw-bold text-success mb-1">24/7</h3>
+                                            <p class="text-muted mb-0 small">Dedicated Support SLA</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="p-4 bg-white rounded-3 border shadow-sm text-center h-100">
+                                            <h3 class="fw-bold text-warning mb-1">Vientiane</h3>
+                                            <p class="text-muted mb-0 small">On-site Local Presence</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Core Values -->
+                        <div class="mt-5 pt-4">
+                            <div class="nahan-section-header">
+                                <span class="section-eyebrow">Principles</span>
+                                <h2 class="section-title">Our Core Commitments</h2>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-md-4">
+                                    <div class="p-4 bg-white rounded-3 border h-100">
+                                        <div class="fs-2 text-primary mb-2"><i class="fa fa-shield"></i></div>
+                                        <h5 class="fw-bold">Integrity &amp; Data Security</h5>
+                                        <p class="text-muted small mb-0">Your financial and operational data is protected with strict enterprise security protocols and isolated cloud hosting.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-4 bg-white rounded-3 border h-100">
+                                        <div class="fs-2 text-success mb-2"><i class="fa fa-heart"></i></div>
+                                        <h5 class="fw-bold">User Adoption First</h5>
+                                        <p class="text-muted small mb-0">An ERP is only as good as the people using it. We prioritize patient, comprehensive Lao-language staff training.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="p-4 bg-white rounded-3 border h-100">
+                                        <div class="fs-2 text-info mb-2"><i class="fa fa-rocket"></i></div>
+                                        <h5 class="fw-bold">Long-Term Partnership</h5>
+                                        <p class="text-muted small mb-0">We don't vanish after deployment. We remain your ongoing technology partner as your business scales.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- ============================================== -->
+    <!-- CONTACT US PAGE                                -->
+    <!-- ============================================== -->
+    <template id="contact_page" name="Contact Us - Nahan.app Odoo 18">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Contact Us | Request Free Odoo 18 ERP Consultation | Nahan.app</t>
+            <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
+            <t t-set="raw_phone" t-value="comp.phone if comp and comp.phone else '02052746767'"/>
+            <t t-set="clean_digits" t-value="''.join([c for c in raw_phone if c.isdigit()])"/>
+            <t t-set="wa_number" t-value="'856' + clean_digits[1:] if clean_digits.startswith('020') else ('856' + clean_digits if clean_digits.startswith('20') else clean_digits)"/>
+            <div id="wrap" class="nahan-body">
+
+                <!-- Contact Hero -->
+                <section class="nahan-hero-section py-5">
+                    <div class="container text-center py-4">
+                        <span class="hero-badge">Direct Communication</span>
+                        <h1 class="hero-title mt-2">
+                            <span>Get in Touch with</span> <span class="text-gradient"><t t-esc="comp.name if comp and comp.name else 'Nahan.app'"/></span>
+                        </h1>
+                        <p class="hero-subtitle mx-auto">
+                            Have questions about Odoo 18 or TaxRIS API integration? Our consultants in Vientiane are ready to assist.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Contact Channels & Form -->
+                <section class="py-5">
+                    <div class="container py-4">
+                        <div class="row g-5">
+                            <!-- Left: Contact Details -->
+                            <div class="col-lg-5">
+                                <div class="p-4 bg-white rounded-4 border shadow-sm h-100">
+                                    <span class="section-eyebrow">Headquarters</span>
+                                    <h3 class="fw-bold text-dark mt-2 mb-4">Vientiane Office</h3>
+
+                                    <div class="d-flex align-items-start gap-3 mb-4">
+                                        <div class="fs-4 text-primary"><i class="fa fa-map-marker"></i></div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Office Address</h6>
+                                            <p class="text-muted small mb-0">
+                                                <t t-if="comp and (comp.street or comp.city)">
+                                                    <span t-if="comp.street" t-field="comp.street"/>
+                                                    <t t-if="comp.street2">, <span t-field="comp.street2"/></t>
+                                                    <t t-if="comp.city">, <span t-field="comp.city"/></t>
+                                                    <t t-if="comp.state_id">, <span t-field="comp.state_id.name"/></t>
+                                                    <t t-if="comp.zip"> <span t-field="comp.zip"/></t>
+                                                    <t t-if="comp.country_id">, <span t-field="comp.country_id.name"/></t>
+                                                </t>
+                                                <t t-else="">
+                                                    <span>Ban Vansay, Saysettha, Vientiane Capital, Laos</span>
+                                                </t>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-start gap-3 mb-4">
+                                        <div class="fs-4 text-success"><i class="fa fa-phone"></i></div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Direct Call &amp; WhatsApp</h6>
+                                            <p class="text-muted small mb-0">
+                                                <a t-attf-href="tel:#{comp.phone if comp and comp.phone else '02052746767'}" class="text-decoration-none text-muted">
+                                                    <span t-if="comp and comp.phone" t-field="comp.phone"/>
+                                                    <span t-else="">02052746767</span>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-start gap-3 mb-4">
+                                        <div class="fs-4 text-info"><i class="fa fa-envelope"></i></div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Email Inquiries</h6>
+                                            <p class="text-muted small mb-0">
+                                                <a t-attf-href="mailto:#{comp.email if comp and comp.email else 'vorlasanedev@gmail.com'}" class="text-decoration-none text-muted">
+                                                    <span t-if="comp and comp.email" t-field="comp.email"/>
+                                                    <span t-else="">vorlasanedev@gmail.com</span>
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Dynamic Tax ID / TIN -->
+                                    <div t-if="comp and comp.vat" class="d-flex align-items-start gap-3 mb-4">
+                                        <div class="fs-4 text-secondary"><i class="fa fa-file-text-o"></i></div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Tax ID / TIN</h6>
+                                            <p class="text-muted small mb-0">
+                                                <span t-field="comp.vat"/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Dynamic Company Registry / ID -->
+                                    <div t-if="comp and comp.company_registry" class="d-flex align-items-start gap-3 mb-4">
+                                        <div class="fs-4 text-secondary"><i class="fa fa-id-card-o"></i></div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Company Registry No.</h6>
+                                            <p class="text-muted small mb-0">
+                                                <span t-field="comp.company_registry"/>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex align-items-start gap-3 mb-4">
+                                        <div class="fs-4 text-warning"><i class="fa fa-clock-o"></i></div>
+                                        <div>
+                                            <h6 class="fw-bold mb-1">Business Hours</h6>
+                                            <p class="text-muted small mb-0">Monday – Friday: 08:30 - 17:30 (ICT)</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 pt-3 border-top">
+                                        <h6 class="fw-bold mb-2">Instant Chat via WhatsApp</h6>
+                                        <a t-attf-href="https://wa.me/#{wa_number}?text=Hello%20#{comp.name if comp and comp.name else 'Nahan'},%20I%20would%20like%20to%20consult%20about%20Odoo%2018%20in%20Laos" 
+                                           class="btn btn-success w-100 py-2 fw-bold" target="_blank" rel="noopener">
+                                            <i class="fa fa-whatsapp me-2"></i>Chat on WhatsApp (<span t-esc="comp.phone if comp and comp.phone else '02052746767'"/>)
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right: Consultation Form -->
+                            <div class="col-lg-7">
+                                <div class="nahan-consultation-card shadow-sm">
+                                    <div class="mb-4">
+                                        <h3 class="fw-bold text-dark mb-1">Send Us a Message</h3>
+                                        <p class="text-muted small">Fill out the form below to request a free consultation or quotation.</p>
+                                    </div>
+
+                                    <div id="nahanFormResponse"></div>
+
+                                    <form id="nahanConsultationForm" method="POST" action="/consultation/submit">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <input type="hidden" name="redirect_url" value="/contact-us?submitted=1"/>
+                                        
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <label class="form-label">Company Name *</label>
+                                                <input type="text" name="company_name" class="form-control" placeholder="Company Name" required="required"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Your Name *</label>
+                                                <input type="text" name="contact_name" class="form-control" placeholder="Full Name" required="required"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Phone / WhatsApp *</label>
+                                                <input type="tel" name="phone" class="form-control" placeholder="+856 20 ..." required="required"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Email *</label>
+                                                <input type="email" name="email" class="form-control" placeholder="email@company.la" required="required"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Industry</label>
+                                                <select name="business_type" class="form-select">
+                                                    <option value="">Select industry...</option>
+                                                    <option value="retail">Retail / POS</option>
+                                                    <option value="wholesale">Wholesale &amp; Distribution</option>
+                                                    <option value="manufacturing">Manufacturing</option>
+                                                    <option value="services">Services</option>
+                                                    <option value="hospitality">Hospitality &amp; Restaurant</option>
+                                                    <option value="other">Other / Startup</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">Team Size</label>
+                                                <select name="employee_count" class="form-select">
+                                                    <option value="1-10">1 - 10 Employees</option>
+                                                    <option value="11-50">11 - 50 Employees</option>
+                                                    <option value="51-200">51 - 200 Employees</option>
+                                                    <option value="200+">200+ Employees</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label">Message / Details</label>
+                                                <textarea name="message" rows="4" class="form-control" placeholder="Tell us how we can help your business..."></textarea>
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <button type="submit" class="btn btn-nahan-primary btn-lg w-100 py-3 btn-consultation-submit shadow">
+                                                    Submit Consultation Request
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- ============================================== -->
+    <!-- BLOG & INSIGHTS PAGE                           -->
+    <!-- ============================================== -->
+    <template id="blog_page" name="Blog &amp; Insights - Nahan.app Odoo 18">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Blog &amp; Insights | Odoo 18 &amp; Lao TaxRIS Guides | Nahan.app</t>
+            <div id="wrap" class="nahan-body">
+
+                <!-- Blog Hero -->
+                <section class="nahan-hero-section py-5">
+                    <div class="container text-center py-4">
+                        <span class="hero-badge">Knowledge Base &amp; Best Practices</span>
+                        <h1 class="hero-title mt-2">
+                            <span>Lao ERP &amp; Tech</span> <span class="text-gradient">Insights</span>
+                        </h1>
+                        <p class="hero-subtitle mx-auto">
+                            Practical guides, regulatory updates on Lao TaxRIS compliance, and strategies for digital transformation in Laos.
+                        </p>
+                    </div>
+                </section>
+
+                <!-- Blog Articles Grid -->
+                <section class="py-5">
+                    <div class="container py-4">
+                        <div class="row g-4">
+                            <!-- Article 1 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100 border rounded-4 overflow-hidden shadow-sm">
+                                    <div class="p-4 bg-light border-bottom text-center">
+                                        <i class="fa fa-file-text-o text-primary" style="font-size: 3rem;"></i>
+                                        <span class="badge bg-success mt-3 d-inline-block">TaxRIS Guide</span>
+                                    </div>
+                                    <div class="card-body p-4 d-flex flex-column">
+                                        <div class="small text-muted mb-2">September 2026 • 6 min read</div>
+                                        <h5 class="card-title fw-bold text-dark">Connecting Odoo 18 to Lao TaxRIS E-Invoicing</h5>
+                                        <p class="card-text text-muted small flex-grow-1">
+                                            Step-by-step technical guide explaining how Lao businesses can integrate POS &amp; Accounting with the Ministry of Finance TaxRIS system.
+                                        </p>
+                                        <a href="/contact-us" class="btn btn-outline-primary btn-sm mt-3">Read Full Guide &amp; Consult</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Article 2 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100 border rounded-4 overflow-hidden shadow-sm">
+                                    <div class="p-4 bg-light border-bottom text-center">
+                                        <i class="fa fa-cubes text-info" style="font-size: 3rem;"></i>
+                                        <span class="badge bg-info mt-3 d-inline-block">ERP Roadmap</span>
+                                    </div>
+                                    <div class="card-body p-4 d-flex flex-column">
+                                        <div class="small text-muted mb-2">August 2026 • 8 min read</div>
+                                        <h5 class="card-title fw-bold text-dark">Odoo 18 ERP for Lao SMEs: 2026 Implementation Roadmap</h5>
+                                        <p class="card-text text-muted small flex-grow-1">
+                                            Avoid implementation pitfalls. Learn our proven 5-stage deployment methodology designed specifically for companies in Laos.
+                                        </p>
+                                        <a href="/contact-us" class="btn btn-outline-primary btn-sm mt-3">Read Full Guide &amp; Consult</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Article 3 -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="card h-100 border rounded-4 overflow-hidden shadow-sm">
+                                    <div class="p-4 bg-light border-bottom text-center">
+                                        <i class="fa fa-money text-success" style="font-size: 3rem;"></i>
+                                        <span class="badge bg-primary mt-3 d-inline-block">Accounting</span>
+                                    </div>
+                                    <div class="card-body p-4 d-flex flex-column">
+                                        <div class="small text-muted mb-2">July 2026 • 5 min read</div>
+                                        <h5 class="card-title fw-bold text-dark">Multi-Currency Management: LAK, THB, USD &amp; CNY</h5>
+                                        <p class="card-text text-muted small flex-grow-1">
+                                            How to automate daily exchange rate updates and maintain clean Lao GAAP multi-currency ledgers in Odoo 18.
+                                        </p>
+                                        <a href="/contact-us" class="btn btn-outline-primary btn-sm mt-3">Read Full Guide &amp; Consult</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA within Blog -->
+                        <div class="mt-5 p-5 bg-white rounded-4 border text-center shadow-sm">
+                            <h3 class="fw-bold text-dark mb-2">Need Help Implementing Odoo 18 in Laos?</h3>
+                            <p class="text-muted mb-4">Book a 30-minute free discovery session with our senior Lao ERP architects.</p>
+                            <a href="/contact-us" class="btn btn-nahan-primary btn-lg shadow px-5">Request Free Consultation</a>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </t>
+    </template>
+
+</odoo>

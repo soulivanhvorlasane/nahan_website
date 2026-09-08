@@ -1,0 +1,1094 @@
+// Nahan.app Corporate Theme - Odoo 18 SCSS
+// Color Variables
+$nahan-primary: #0A2540;
+$nahan-secondary: #4F46E5;
+$nahan-accent: #06B6D4;
+$nahan-dark: #0F172A;
+$nahan-bg: #F8FAFC;
+$nahan-surface: #FFFFFF;
+$nahan-border: #E2E8F0;
+$nahan-muted: #64748B;
+$nahan-success: #10B981;
+
+// Global Typography & Body
+body.nahan-body {
+    background-color: $nahan-bg;
+    color: $nahan-dark;
+    font-family: -apple-system, BlinkMacSystemFont, "Noto Sans Lao", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+// Modern SaaS Navbar
+.nahan-saas-navbar {
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(226, 232, 240, 0.9) !important;
+    transition: all 0.25s ease;
+    z-index: 1030;
+
+    .navbar-brand {
+        transition: transform 0.2s ease;
+        &:hover {
+            transform: scale(1.02);
+        }
+    }
+
+    .nahan-nav-links {
+        .nav-link {
+            font-weight: 600;
+            font-size: 0.93rem;
+            color: #1E293B !important;
+            padding: 0.5rem 0.85rem !important;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+
+            &:hover {
+                color: #4F46E5 !important;
+                background: #F1F5F9;
+            }
+
+            &.active {
+                color: #4F46E5 !important;
+                background: rgba(79, 70, 229, 0.08);
+                font-weight: 700;
+            }
+        }
+
+        .nahan-services-dropdown {
+            position: relative;
+
+            @media (min-width: 992px) {
+                &:hover > .dropdown-menu,
+                &.is-hovered > .dropdown-menu {
+                    display: block;
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                    pointer-events: auto;
+                }
+            }
+
+            .dropdown-menu {
+                min-width: 290px;
+                border-radius: 12px;
+                border: 1px solid rgba(226, 232, 240, 0.9);
+                box-shadow: 0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 4px 12px -2px rgba(15, 23, 42, 0.06) !important;
+                padding: 8px;
+                margin: 0 !important;
+                top: 100% !important;
+                transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+
+                // Invisible hover bridge pseudo-element:
+                // Bridges the hit area between the navbar link and dropdown menu,
+                // and extends 14px on left/right for seamless diagonal cursor movement.
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: -14px;
+                    left: -14px;
+                    right: -14px;
+                    height: 16px;
+                    background: transparent;
+                    z-index: 10;
+                }
+
+                @media (min-width: 992px) {
+                    display: block;
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateY(4px);
+                    pointer-events: none;
+                }
+
+                &.show {
+                    display: block !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    transform: translateY(0) !important;
+                    pointer-events: auto !important;
+                }
+            }
+
+            .dropdown-item {
+                border-radius: 8px;
+                padding: 0.55rem 0.85rem;
+                transition: all 0.18s ease;
+
+                .dropdown-icon-circle {
+                    width: 36px;
+                    height: 36px;
+                    border-radius: 8px;
+                    background: #EEF2FF;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 0.95rem;
+                    transition: all 0.18s ease;
+                    flex-shrink: 0;
+                }
+
+                &:hover {
+                    background: #F8FAFC;
+                    .dropdown-icon-circle {
+                        background: #4F46E5;
+                        i {
+                            color: #FFFFFF !important;
+                        }
+                    }
+                    .fw-semibold {
+                        color: #4F46E5 !important;
+                    }
+                }
+
+                &.active {
+                    background: rgba(79, 70, 229, 0.08);
+                    .dropdown-icon-circle {
+                        background: #4F46E5;
+                        i {
+                            color: #FFFFFF !important;
+                        }
+                    }
+                    .fw-semibold {
+                        color: #4F46E5 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .nahan-phone-link {
+        transition: all 0.2s ease;
+        padding: 4px 10px;
+        border: 1px solid transparent;
+
+        .phone-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #EFF6FF;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .phone-text {
+            font-size: 0.92rem;
+            color: #0F172A;
+            letter-spacing: -0.2px;
+        }
+
+        &:hover {
+            border-color: #E2E8F0;
+            background: #F8FAFC;
+            .phone-icon-circle {
+                background: #4F46E5;
+                i {
+                    color: #FFFFFF !important;
+                }
+            }
+        }
+    }
+}
+
+// Modern SaaS CTA Button
+.btn-nahan-cta {
+    background: linear-gradient(135deg, #4F46E5 0%, #3B82F6 100%) !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    font-size: 0.92rem;
+    letter-spacing: 0.2px;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+
+    &:hover {
+        background: linear-gradient(135deg, #4338CA 0%, #2563EB 100%) !important;
+        color: #FFFFFF !important;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+// Mobile Navbar & Drawer
+.nahan-saas-mobile-navbar {
+    z-index: 1030;
+    .navbar-toggler {
+        background: #F1F5F9;
+        border-radius: 8px;
+        &:focus {
+            box-shadow: none;
+        }
+    }
+}
+
+.nahan-mobile-drawer {
+    width: 310px !important;
+    .nahan-mobile-nav-list {
+        .nav-link {
+            font-size: 1.05rem;
+            padding: 0.65rem 0.75rem;
+            border-radius: 8px;
+            color: #1E293B !important;
+            font-weight: 600;
+            transition: all 0.2s ease;
+
+            &:hover, &:focus {
+                background: #F1F5F9;
+                color: #4F46E5 !important;
+                padding-left: 1rem;
+            }
+
+            &.active {
+                background: rgba(79, 70, 229, 0.08);
+                color: #4F46E5 !important;
+                font-weight: 700;
+            }
+        }
+
+        #nahanMobileServicesSubmenu {
+            .nav-link {
+                font-size: 0.92rem;
+                padding: 0.45rem 0.65rem;
+                border-radius: 6px;
+                color: #475569 !important;
+                font-weight: 500;
+                &:hover, &:focus {
+                    color: #4F46E5 !important;
+                    background: #F8FAFC;
+                    padding-left: 0.85rem;
+                }
+                &.active {
+                    color: #4F46E5 !important;
+                    background: rgba(79, 70, 229, 0.08);
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+// Language Switcher Pill
+.nahan-lang-switcher {
+    display: inline-flex;
+    align-items: center;
+    background: #EDF2F7;
+    border-radius: 30px;
+    padding: 3px;
+    border: 1px solid $nahan-border;
+
+    .lang-option {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 10px;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: $nahan-muted;
+        text-decoration: none;
+        border-radius: 20px;
+        transition: all 0.2s ease;
+
+        img {
+            width: 18px;
+            height: 12px;
+            border-radius: 2px;
+            object-fit: cover;
+        }
+
+        &.active {
+            background: $nahan-surface;
+            color: $nahan-primary;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+        }
+
+        &:hover:not(.active) {
+            color: $nahan-secondary;
+        }
+    }
+}
+
+// Hero Banner Section
+.nahan-hero-section {
+    position: relative;
+    background: linear-gradient(135deg, #0A2540 0%, #0F172A 60%, #1E1B4B 100%);
+    color: #FFFFFF;
+    padding: 90px 0 110px;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        top: -150px;
+        right: -100px;
+        background: radial-gradient(circle, rgba(79, 70, 229, 0.28) 0%, rgba(6, 182, 212, 0.1) 60%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(40px);
+        pointer-events: none;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 450px;
+        height: 450px;
+        bottom: -100px;
+        left: -100px;
+        background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%);
+        border-radius: 50%;
+        filter: blur(50px);
+        pointer-events: none;
+    }
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: $nahan-accent;
+        font-size: 0.85rem;
+        font-weight: 700;
+        padding: 6px 14px;
+        border-radius: 30px;
+        backdrop-filter: blur(8px);
+        margin-bottom: 22px;
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: $nahan-accent;
+            border-radius: 50%;
+            box-shadow: 0 0 8px $nahan-accent;
+        }
+    }
+
+    .hero-title {
+        font-size: 3.2rem;
+        font-weight: 800;
+        line-height: 1.18;
+        letter-spacing: -0.02em;
+        margin-bottom: 24px;
+
+        .text-gradient {
+            background: linear-gradient(90deg, #38BDF8 0%, #818CF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: #CBD5E1;
+        line-height: 1.6;
+        margin-bottom: 36px;
+        max-width: 580px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .hero-illustration-wrapper {
+        position: relative;
+        text-align: center;
+        z-index: 2;
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            transition: transform 0.4s ease;
+        }
+
+        &:hover img {
+            transform: translateY(-4px);
+        }
+    }
+}
+
+// Modern Enterprise Buttons
+.btn-nahan-primary {
+    background: linear-gradient(135deg, $nahan-secondary 0%, #4338CA 100%);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    padding: 13px 28px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+    transition: all 0.25s ease;
+
+    &:hover {
+        background: linear-gradient(135deg, #4338CA 0%, #3730A3 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.5);
+        color: #FFFFFF !important;
+    }
+}
+
+.btn-nahan-outline {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF !important;
+    font-weight: 700;
+    padding: 12px 26px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: #FFFFFF;
+        transform: translateY(-2px);
+    }
+}
+
+// Floating Live Stat Bar
+.nahan-stats-bar {
+    background: $nahan-surface;
+    border-radius: 16px;
+    padding: 32px 24px;
+    box-shadow: 0 20px 40px -10px rgba(10, 37, 64, 0.08);
+    border: 1px solid $nahan-border;
+    margin-top: -55px;
+    position: relative;
+    z-index: 10;
+
+    .stat-item {
+        text-align: center;
+        padding: 10px 15px;
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: $nahan-primary;
+            line-height: 1;
+            margin-bottom: 6px;
+            font-feature-settings: "tnum";
+
+            .stat-suffix {
+                color: $nahan-accent;
+                font-size: 2rem;
+            }
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: $nahan-muted;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+    }
+}
+
+// Section Header Common
+.nahan-section-header {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 55px;
+
+    .section-eyebrow {
+        display: inline-block;
+        font-size: 0.82rem;
+        font-weight: 800;
+        color: $nahan-secondary;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin-bottom: 12px;
+        padding: 4px 14px;
+        background: rgba(79, 70, 229, 0.08);
+        border-radius: 20px;
+    }
+
+    .section-title {
+        font-size: 2.4rem;
+        font-weight: 800;
+        color: $nahan-primary;
+        line-height: 1.25;
+        margin-bottom: 16px;
+    }
+
+    .section-subtitle {
+        font-size: 1.1rem;
+        color: $nahan-muted;
+        line-height: 1.6;
+    }
+}
+
+// Service Cards
+.nahan-service-card {
+    background: $nahan-surface;
+    border: 1px solid $nahan-border;
+    border-radius: 14px;
+    padding: 32px 26px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: transparent;
+        transition: background 0.3s ease;
+    }
+
+    .service-icon-box {
+        width: 56px;
+        height: 56px;
+        border-radius: 12px;
+        background: rgba(79, 70, 229, 0.08);
+        color: $nahan-secondary;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.6rem;
+        margin-bottom: 22px;
+        transition: all 0.3s ease;
+    }
+
+    .service-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $nahan-primary;
+        margin-bottom: 12px;
+    }
+
+    .service-description {
+        font-size: 0.94rem;
+        color: $nahan-muted;
+        flex-grow: 1;
+        margin-bottom: 20px;
+    }
+
+    .service-tag {
+        display: inline-block;
+        font-size: 0.78rem;
+        font-weight: 700;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: #F1F5F9;
+        color: #475569;
+        align-self: flex-start;
+    }
+
+    &.taxris-highlight {
+        border-color: rgba(6, 182, 212, 0.4);
+        background: linear-gradient(180deg, #FFFFFF 0%, #F0FDFA 100%);
+
+        &::before {
+            background: linear-gradient(90deg, #06B6D4, #10B981);
+        }
+
+        .service-icon-box {
+            background: rgba(6, 182, 212, 0.12);
+            color: #0891B2;
+        }
+
+        .service-tag {
+            background: rgba(16, 185, 129, 0.12);
+            color: #047857;
+        }
+    }
+
+    &:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 30px -10px rgba(10, 37, 64, 0.1);
+        border-color: $nahan-secondary;
+
+        &::before {
+            background: linear-gradient(90deg, $nahan-secondary, $nahan-accent);
+        }
+
+        .service-icon-box {
+            background: $nahan-secondary;
+            color: #FFFFFF;
+            transform: scale(1.05);
+        }
+    }
+}
+
+// Why Choose Nahan Section
+.nahan-why-section {
+    background: $nahan-surface;
+    border-top: 1px solid $nahan-border;
+    border-bottom: 1px solid $nahan-border;
+    padding: 90px 0;
+
+    .feature-box {
+        display: flex;
+        gap: 18px;
+        margin-bottom: 36px;
+
+        .feature-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            background: rgba(79, 70, 229, 0.08);
+            color: $nahan-secondary;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .feature-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: $nahan-primary;
+            margin-bottom: 6px;
+        }
+
+        .feature-text {
+            font-size: 0.92rem;
+            color: $nahan-muted;
+            margin-bottom: 0;
+        }
+    }
+}
+
+// Odoo Modules Grid
+.nahan-module-card {
+    background: $nahan-surface;
+    border: 1px solid $nahan-border;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.25s ease;
+    height: 100%;
+
+    .module-icon {
+        font-size: 2.2rem;
+        margin-bottom: 12px;
+        display: inline-block;
+    }
+
+    .module-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: $nahan-primary;
+        margin-bottom: 6px;
+    }
+
+    .module-desc {
+        font-size: 0.85rem;
+        color: $nahan-muted;
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        border-color: $nahan-secondary;
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px -5px rgba(10, 37, 64, 0.08);
+    }
+}
+
+// Industries Grid
+.nahan-industry-card {
+    background: $nahan-surface;
+    border: 1px solid $nahan-border;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.25s ease;
+
+    .industry-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        background: #F1F5F9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        color: $nahan-primary;
+    }
+
+    .industry-name {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: $nahan-primary;
+        margin-bottom: 2px;
+    }
+
+    .industry-desc {
+        font-size: 0.82rem;
+        color: $nahan-muted;
+        margin-bottom: 0;
+    }
+
+    &:hover {
+        background: #F8FAFC;
+        border-color: $nahan-secondary;
+        transform: translateX(4px);
+
+        .industry-icon {
+            background: $nahan-secondary;
+            color: #FFFFFF;
+        }
+    }
+}
+
+// Customer Journey Roadmap
+.nahan-journey-step {
+    position: relative;
+    text-align: center;
+    padding: 20px 15px;
+
+    .step-number {
+        width: 52px;
+        height: 52px;
+        margin: 0 auto 18px;
+        background: $nahan-surface;
+        border: 2px solid $nahan-secondary;
+        color: $nahan-secondary;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        font-weight: 800;
+        box-shadow: 0 4px 10px rgba(79, 70, 229, 0.15);
+        transition: all 0.3s ease;
+    }
+
+    .step-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: $nahan-primary;
+        margin-bottom: 8px;
+    }
+
+    .step-desc {
+        font-size: 0.88rem;
+        color: $nahan-muted;
+    }
+
+    &:hover .step-number {
+        background: $nahan-secondary;
+        color: #FFFFFF;
+        transform: scale(1.1);
+    }
+}
+
+@media (min-width: 992px) {
+    .nahan-journey-row {
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 45px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: repeating-linear-gradient(to right, $nahan-border 0, $nahan-border 8px, transparent 8px, transparent 16px);
+            z-index: 1;
+        }
+    }
+    .nahan-journey-step {
+        z-index: 2;
+    }
+}
+
+// Consultation Form Card
+.nahan-consultation-card {
+    background: $nahan-surface;
+    border-radius: 18px;
+    border: 1px solid $nahan-border;
+    padding: 45px;
+    box-shadow: 0 25px 50px -12px rgba(10, 37, 64, 0.12);
+
+    .form-label {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: $nahan-primary;
+        margin-bottom: 6px;
+    }
+
+    .form-control, .form-select {
+        border: 1.5px solid $nahan-border;
+        border-radius: 8px;
+        padding: 11px 16px;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+
+        &:focus {
+            border-color: $nahan-secondary;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+        }
+    }
+
+    .service-checkbox-btn {
+        display: block;
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: $nahan-primary;
+        background: #F8FAFC;
+        border: 1px solid $nahan-border;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+
+        &:hover {
+            border-color: $nahan-secondary;
+            background: #F1F5F9;
+        }
+    }
+
+    .btn-check:checked + .service-checkbox-btn {
+        background: $nahan-secondary;
+        color: #FFFFFF;
+        border-color: $nahan-secondary;
+    }
+}
+
+// FAQ Accordion
+.nahan-faq-accordion {
+    .accordion-item {
+        border: 1px solid $nahan-border;
+        border-radius: 10px !important;
+        margin-bottom: 14px;
+        overflow: hidden;
+        background: $nahan-surface;
+    }
+
+    .accordion-button {
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: $nahan-primary;
+        padding: 18px 22px;
+        background: $nahan-surface;
+
+        &:not(.collapsed) {
+            color: $nahan-secondary;
+            background: rgba(79, 70, 229, 0.04);
+            box-shadow: none;
+        }
+
+        &:focus {
+            box-shadow: none;
+            border-color: transparent;
+        }
+    }
+
+    .accordion-body {
+        font-size: 0.95rem;
+        color: $nahan-muted;
+        line-height: 1.7;
+        padding: 18px 22px 24px;
+    }
+}
+
+// Testimonials
+.nahan-testimonial-card {
+    background: $nahan-surface;
+    border: 1px solid $nahan-border;
+    border-radius: 14px;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .star-rating {
+        color: #F59E0B;
+        font-size: 1.1rem;
+        margin-bottom: 14px;
+    }
+
+    .testimonial-quote {
+        font-size: 0.98rem;
+        color: #334155;
+        font-style: italic;
+        line-height: 1.6;
+        flex-grow: 1;
+        margin-bottom: 20px;
+    }
+
+    .client-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        .client-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, $nahan-secondary, $nahan-accent);
+            color: #FFFFFF;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .client-name {
+            font-weight: 700;
+            color: $nahan-primary;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .client-title {
+            font-size: 0.8rem;
+            color: $nahan-muted;
+            margin-bottom: 0;
+        }
+    }
+}
+
+// High Conversion CTA Section
+.nahan-cta-banner {
+    background: linear-gradient(135deg, #0A2540 0%, #1E1B4B 100%);
+    border-radius: 20px;
+    padding: 60px 40px;
+    color: #FFFFFF;
+    position: relative;
+    overflow: hidden;
+    margin: 60px 0;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -60px;
+        right: -60px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+    }
+
+    .cta-title {
+        font-size: 2.3rem;
+        font-weight: 800;
+        margin-bottom: 14px;
+    }
+
+    .cta-subtitle {
+        font-size: 1.15rem;
+        color: #CBD5E1;
+        max-width: 600px;
+        margin-bottom: 0;
+    }
+}
+
+// Enterprise Footer
+.nahan-footer {
+    background: #0A2540;
+    color: #94A3B8;
+    padding: 80px 0 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+
+    .footer-heading {
+        color: #FFFFFF;
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 22px;
+        letter-spacing: 0.02em;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            margin-bottom: 11px;
+            a {
+                color: #94A3B8;
+                text-decoration: none;
+                font-size: 0.92rem;
+                transition: color 0.2s ease;
+
+                &:hover {
+                    color: $nahan-accent;
+                    padding-left: 4px;
+                }
+            }
+        }
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 50px;
+        padding-top: 25px;
+        font-size: 0.88rem;
+    }
+}
+
+// Floating WhatsApp / Chat Button (Laos SME favorite)
+.nahan-floating-chat {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1050;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #25D366;
+    color: #FFFFFF;
+    padding: 12px 18px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: #20BA56;
+        color: #FFFFFF;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 28px rgba(37, 211, 102, 0.5);
+    }
+}
+
+// Responsive Tweaks
+@media (max-width: 768px) {
+    .nahan-hero-section {
+        padding: 60px 0 80px;
+
+        .hero-title {
+            font-size: 2.2rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+        }
+    }
+
+    .nahan-stats-bar {
+        margin-top: -30px;
+        padding: 20px 10px;
+
+        .stat-item {
+            margin-bottom: 15px;
+        }
+    }
+
+    .nahan-consultation-card {
+        padding: 24px 18px;
+    }
+}

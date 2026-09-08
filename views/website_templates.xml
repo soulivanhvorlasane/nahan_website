@@ -1,0 +1,1333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Custom Header Navigation with Bilingual Switcher -->
+    <template id="nahan_header" inherit_id="website.layout" name="Nahan Header &amp; SEO Meta" priority="15">
+        <xpath expr="//head" position="inside">
+            <!-- Open Graph / Facebook Meta Tags -->
+            <meta property="og:type" content="website"/>
+            <meta property="og:title" t-att-content="seo_title or 'ERP Odoo 18 Laos | SME ERP, POS, Website &amp; TaxRIS Integration | Nahan'"/>
+            <meta property="og:description" t-att-content="seo_description or 'Nahan.app provides Odoo 18 ERP implementation, POS, Accounting, CRM, Inventory Management, Website Development, eCommerce and TaxRIS API Integration for SMEs and Startups in Laos.'"/>
+            <meta property="og:image" content="/nahan_website/static/src/img/hero_erp_illustration.svg"/>
+            <meta property="og:site_name" content="Nahan.app"/>
+            
+            <!-- Twitter Card Meta Tags -->
+            <meta name="twitter:card" content="summary_large_image"/>
+            <meta name="twitter:title" t-att-content="seo_title or 'ERP Odoo 18 Laos | SME ERP, POS, Website &amp; TaxRIS Integration | Nahan'"/>
+            <meta name="twitter:description" t-att-content="seo_description or 'Nahan.app provides Odoo 18 ERP implementation, POS, Accounting, CRM, Inventory Management, Website Development, eCommerce and TaxRIS API Integration for SMEs and Startups in Laos.'"/>
+            <meta name="twitter:image" content="/nahan_website/static/src/img/hero_erp_illustration.svg"/>
+
+            <!-- Schema.org JSON-LD Structured Data for LocalBusiness & ProfessionalService -->
+            <script type="application/ld+json">
+            {
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              "name": "Nahan.app - ERP Odoo 18 Laos",
+              "alternateName": "Nahan ERP Consulting",
+              "image": "https://nahan.app/nahan_website/static/src/img/logo.svg",
+              "description": "Nahan.app provides ERP implementation, Odoo customization, POS systems, Website development, eCommerce solutions, TaxRIS API integration, and Accounting systems in Laos.",
+              "url": "https://nahan.app",
+              "telephone": "+8562052746767",
+              "priceRange": "$$",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Dongpalan Thong Road, Sisattanak District",
+                "addressLocality": "Vientiane Capital",
+                "addressRegion": "Vientiane",
+                "postalCode": "01000",
+                "addressCountry": "LA"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 17.9620,
+                "longitude": 102.6158
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday"
+                ],
+                "opens": "08:30",
+                "closes": "17:30"
+              },
+              "sameAs": [
+                "https://facebook.com/nahanapp",
+                "https://linkedin.com/company/nahanapp"
+              ]
+            }
+            </script>
+        </xpath>
+    </template>
+
+    <!-- Language Selector Snippet Template -->
+    <template id="language_switcher" name="Nahan Language Switcher">
+        <div class="nahan-lang-switcher ms-lg-3 my-2 my-lg-0">
+            <!-- English Option -->
+            <a t-attf-href="/website/lang/en_US?r=#{request.httprequest.path}" 
+               t-attf-class="lang-option #{'active' if request.context.get('lang') in ['en_US', 'en'] else ''}"
+               title="English (US)">
+                <img src="/nahan_website/static/src/img/us_flag.svg" alt="English"/>
+                <span>EN</span>
+            </a>
+            <!-- Lao Option -->
+            <a t-attf-href="/website/lang/lo_LA?r=#{request.httprequest.path}" 
+               t-attf-class="lang-option #{'active' if request.context.get('lang') in ['lo_LA', 'lo'] else ''}"
+               title="Lao (ພາສາລາວ)">
+                <img src="/nahan_website/static/src/img/lao_flag.svg" alt="ພາສາລາວ"/>
+                <span>ລາວ</span>
+            </a>
+        </div>
+    </template>
+
+    <!-- MAIN HOMEPAGE TEMPLATE -->
+    <template id="homepage" name="Nahan.app - ERP Odoo 18 Laos">
+        <t t-call="website.layout">
+            <t t-set="additional_title" t-value="seo_title or 'ERP Odoo 18 Laos | SME ERP, POS, Website &amp; TaxRIS Integration | Nahan'"/>
+            <div id="wrap" class="nahan-body">
+
+                <!-- 1. HERO BANNER SECTION -->
+                <section class="nahan-hero-section">
+                    <div class="container position-relative" style="z-index: 2;">
+                        <div class="row align-items-center g-5">
+                            <div class="col-lg-6">
+                                <div class="hero-badge">
+                                    <span class="pulse-dot"></span>
+                                    <span>#1 ERP Odoo 18 Partner for Lao SMEs</span>
+                                </div>
+                                <h1 class="hero-title">
+                                    <span>ERP Odoo 18 for</span> <span class="text-gradient">SMEs and Startups</span> <span>in Laos</span>
+                                </h1>
+                                <p class="hero-subtitle">
+                                    Modern business management solutions powered by Odoo 18.
+                                </p>
+                                <div class="hero-buttons">
+                                    <a href="#consultation" class="btn btn-nahan-primary btn-lg shadow">
+                                        <i class="fa fa-paper-plane me-2"></i>Request Consultation
+                                    </a>
+                                    <a href="#consultation" class="btn btn-nahan-outline btn-lg">
+                                        <i class="fa fa-calendar-check-o me-2"></i>Schedule Demo
+                                    </a>
+                                </div>
+                                <div class="d-flex align-items-center gap-3 mt-4 pt-2">
+                                    <img src="/nahan_website/static/src/img/taxris_badge.svg" alt="TaxRIS API Certified" style="height: 34px;"/>
+                                    <span class="text-white-50 small">Official Lao E-Invoicing &amp; TaxRIS API Ready</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="hero-illustration-wrapper">
+                                    <img src="/nahan_website/static/src/img/hero_erp_illustration.svg" alt="Odoo 18 ERP Dashboard Lao System" class="img-fluid"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. DYNAMIC LIVE STATS BAR (Backend Managed via nahan.website.stats) -->
+                <div class="container">
+                    <div class="nahan-stats-bar">
+                        <div class="row g-3">
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number" t-att-data-target="projects_target or 20" t-att-data-raw="stats.projects_completed if stats else '20+'">
+                                        <span class="stat-val" t-esc="stats.projects_completed if stats else '20+'">20+</span>
+                                    </div>
+                                    <div class="stat-label">Projects Completed</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number" t-att-data-target="clients_target or 15" t-att-data-raw="stats.happy_clients if stats else '15+'">
+                                        <span class="stat-val" t-esc="stats.happy_clients if stats else '15+'">15+</span>
+                                    </div>
+                                    <div class="stat-label">Happy Clients</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number" t-att-data-target="modules_target or 10" t-att-data-raw="stats.odoo_modules if stats else '10+'">
+                                        <span class="stat-val" t-esc="stats.odoo_modules if stats else '10+'">10+</span>
+                                    </div>
+                                    <div class="stat-label">Odoo Modules</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-3">
+                                <div class="stat-item">
+                                    <div class="stat-number">
+                                        <span class="stat-val" t-esc="stats.support_hours if stats else '24/7'">24/7</span>
+                                    </div>
+                                    <div class="stat-label">Support Hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SERVICES SECTION -->
+                <section class="py-5 my-4" id="services">
+                    <div class="container py-4">
+                        <div class="nahan-section-header">
+                            <span class="section-eyebrow">Enterprise Solutions</span>
+                            <h2 class="section-title">Comprehensive Odoo 18 Services Tailored for Laos</h2>
+                            <p class="section-subtitle">
+                                From rapid POS rollouts to full-scale ERP installations with Lao national tax compliance, 
+                                we build systems that scale your operations seamlessly.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Service 1: ERP Implementation -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-cubes"></i></div>
+                                    <h3 class="service-title">ERP Implementation</h3>
+                                    <p class="service-description">
+                                        End-to-end deployment of Odoo 18 configured specifically to your workflow, charts of accounts, and operations.
+                                    </p>
+                                    <span class="service-tag">Complete Setup</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 2: Odoo Customization -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-code"></i></div>
+                                    <h3 class="service-title">Odoo Customization</h3>
+                                    <p class="service-description">
+                                        Custom module development, personalized reports, tailored business logic, and custom approval workflows.
+                                    </p>
+                                    <span class="service-tag">Custom Modules</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 3: POS Solutions -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-shopping-basket"></i></div>
+                                    <h3 class="service-title">POS Solutions</h3>
+                                    <p class="service-description">
+                                        Fast, touchscreen-friendly Point of Sale for retail stores, supermarkets, restaurants, and cafes with offline support.
+                                    </p>
+                                    <span class="service-tag">Retail &amp; F&amp;B</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 4: Accounting & Finance -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-calculator"></i></div>
+                                    <h3 class="service-title">Accounting &amp; Finance</h3>
+                                    <p class="service-description">
+                                        Multi-currency accounting (LAK, THB, USD, CNY), Lao financial statements, automated bank reconciliation, and cash flow.
+                                    </p>
+                                    <span class="service-tag">Lao GAAP &amp; Multi-Currency</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 5: CRM Solutions -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-users"></i></div>
+                                    <h3 class="service-title">CRM Solutions</h3>
+                                    <p class="service-description">
+                                        Track leads, automate customer follow-ups, optimize sales pipelines, and boost deal closure rates across your team.
+                                    </p>
+                                    <span class="service-tag">Sales Automation</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 6: Inventory Management -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-archive"></i></div>
+                                    <h3 class="service-title">Inventory Management</h3>
+                                    <p class="service-description">
+                                        Real-time multi-warehouse tracking, barcode scanning, lot &amp; serial control, automatic reordering, and valuation.
+                                    </p>
+                                    <span class="service-tag">Multi-Warehouse</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 7: Website Development -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-globe"></i></div>
+                                    <h3 class="service-title">Website Development</h3>
+                                    <p class="service-description">
+                                        High-performance corporate websites integrated directly into Odoo 18 with bilingual Lao &amp; English support and SEO.
+                                    </p>
+                                    <span class="service-tag">Fast &amp; Responsive</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 8: eCommerce Solutions -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-shopping-cart"></i></div>
+                                    <h3 class="service-title">eCommerce Solutions</h3>
+                                    <p class="service-description">
+                                        Seamless online storefront connected to inventory, orders, customer accounts, and Lao local delivery partners.
+                                    </p>
+                                    <span class="service-tag">Online Store</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 9: TaxRIS API Integration (SPECIAL HIGHLIGHT) -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card taxris-highlight">
+                                    <div class="service-icon-box"><i class="fa fa-file-text-o"></i></div>
+                                    <h3 class="service-title">TaxRIS API Integration</h3>
+                                    <p class="service-description">
+                                        Direct integration with the Lao Tax Department (TaxRIS) for electronic tax invoicing, VAT validation, and legal compliance.
+                                    </p>
+                                    <span class="service-tag">Lao Tax Certified</span>
+                                </div>
+                            </div>
+
+                            <!-- Service 10: Third-Party API Integration -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="nahan-service-card">
+                                    <div class="service-icon-box"><i class="fa fa-exchange"></i></div>
+                                    <h3 class="service-title">Third-Party API Integration</h3>
+                                    <p class="service-description">
+                                        Connect Odoo with Lao QR payment (BCEL One, LAPNet), local banks, logistics (Anousith, Hal-Logistics), and custom systems.
+                                    </p>
+                                    <span class="service-tag">Payment &amp; Logistics</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. WHY CHOOSE NAHAN SECTION -->
+                <section class="nahan-why-section">
+                    <div class="container">
+                        <div class="nahan-section-header">
+                            <span class="section-eyebrow">Our Advantage</span>
+                            <h2 class="section-title">Why Choose Nahan as Your Odoo 18 Partner</h2>
+                            <p class="section-subtitle">
+                                Combining deep knowledge of Lao commercial practices with international software engineering standards.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Feature 1: Local Lao Expertise -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="feature-box">
+                                    <div class="feature-icon"><i class="fa fa-map-marker"></i></div>
+                                    <div>
+                                        <h4 class="feature-title">Local Lao Expertise</h4>
+                                        <p class="feature-text">We understand Lao tax laws, multi-currency commerce, and the day-to-day realities of doing business in Laos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feature 2: Odoo Specialists -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="feature-box">
+                                    <div class="feature-icon"><i class="fa fa-user-secret"></i></div>
+                                    <div>
+                                        <h4 class="feature-title">Odoo Specialists</h4>
+                                        <p class="feature-text">Our certified Lao developers have hands-on experience delivering complex Odoo 18 implementations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feature 3: TaxRIS Integration -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="feature-box">
+                                    <div class="feature-icon"><i class="fa fa-shield"></i></div>
+                                    <div>
+                                        <h4 class="feature-title">TaxRIS Integration</h4>
+                                        <p class="feature-text">Guaranteed compliance with Lao Tax Department electronic tax invoice guidelines and automatic sync.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feature 4: Long-Term Support -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="feature-box">
+                                    <div class="feature-icon"><i class="fa fa-headphones"></i></div>
+                                    <div>
+                                        <h4 class="feature-title">Long-Term Support</h4>
+                                        <p class="feature-text">Dedicated on-site and remote Lao-speaking support, system maintenance, and staff training programs.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feature 5: Modern Technology -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="feature-box">
+                                    <div class="feature-icon"><i class="fa fa-rocket"></i></div>
+                                    <div>
+                                        <h4 class="feature-title">Modern Technology</h4>
+                                        <p class="feature-text">Built on cutting-edge Odoo 18, high-speed cloud infrastructure, and modern responsive design.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Feature 6: International ERP Standards -->
+                            <div class="col-md-6 col-lg-4">
+                                <div class="feature-box">
+                                    <div class="feature-icon"><i class="fa fa-certificate"></i></div>
+                                    <div>
+                                        <h4 class="feature-title">International ERP Standards</h4>
+                                        <p class="feature-text">We build on clean, modular, upgrade-safe architecture following official Odoo best practices.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. ODOO MODULES SECTION -->
+                <section class="py-5 my-4">
+                    <div class="container py-4">
+                        <div class="nahan-section-header">
+                            <span class="section-eyebrow">Modular Architecture</span>
+                            <h2 class="section-title">Fully Integrated Odoo 18 Modules</h2>
+                            <p class="section-subtitle">
+                                Every business is unique. Choose the exact applications you need today, and activate more as your business expands.
+                            </p>
+                        </div>
+
+                        <div class="row g-3">
+                            <!-- Module Cards -->
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-primary"><i class="fa fa-line-chart"></i></div>
+                                    <h4 class="module-name">Sales</h4>
+                                    <p class="module-desc">Quotations, e-signatures, pricing rules</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-info"><i class="fa fa-handshake-o"></i></div>
+                                    <h4 class="module-name">CRM</h4>
+                                    <p class="module-desc">Lead nurturing, pipeline stages</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-success"><i class="fa fa-balance-scale"></i></div>
+                                    <h4 class="module-name">Accounting</h4>
+                                    <p class="module-desc">Lao tax, multi-currency, audit trails</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-warning"><i class="fa fa-cubes"></i></div>
+                                    <h4 class="module-name">Inventory</h4>
+                                    <p class="module-desc">Multi-location, barcode, valuation</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-danger"><i class="fa fa-cogs"></i></div>
+                                    <h4 class="module-name">Manufacturing</h4>
+                                    <p class="module-desc">BOM, work centers, quality control</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-primary"><i class="fa fa-truck"></i></div>
+                                    <h4 class="module-name">Purchase</h4>
+                                    <p class="module-desc">RFQs, vendor bills, 3-way matching</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-success"><i class="fa fa-desktop"></i></div>
+                                    <h4 class="module-name">POS</h4>
+                                    <p class="module-desc">Retail counter, restaurant tables, QR</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-info"><i class="fa fa-id-card"></i></div>
+                                    <h4 class="module-name">HR</h4>
+                                    <p class="module-desc">Employee records, contracts, leaves</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-warning"><i class="fa fa-money"></i></div>
+                                    <h4 class="module-name">Payroll</h4>
+                                    <p class="module-desc">Lao social security (SSO), salary rules</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-primary"><i class="fa fa-laptop"></i></div>
+                                    <h4 class="module-name">Website</h4>
+                                    <p class="module-desc">Drag &amp; drop builder, SEO optimized</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-success"><i class="fa fa-shopping-bag"></i></div>
+                                    <h4 class="module-name">eCommerce</h4>
+                                    <p class="module-desc">Online catalog, checkout, delivery sync</p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-4 col-lg-3">
+                                <div class="nahan-module-card">
+                                    <div class="module-icon text-secondary"><i class="fa fa-tasks"></i></div>
+                                    <h4 class="module-name">Project</h4>
+                                    <p class="module-desc">Kanban boards, timesheets, milestones</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 5. INDUSTRIES WE SERVE -->
+                <section class="py-5 bg-white border-top border-bottom">
+                    <div class="container py-4">
+                        <div class="nahan-section-header">
+                            <span class="section-eyebrow">Target Sectors</span>
+                            <h2 class="section-title">Industries We Serve in Laos</h2>
+                            <p class="section-subtitle">
+                                Proven ERP workflows configured for the unique operational requirements of leading Lao industries.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Retail -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-shopping-basket"></i></div>
+                                    <div>
+                                        <div class="industry-name">Retail</div>
+                                        <p class="industry-desc">Multi-store POS &amp; barcode sync</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Wholesale -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-truck"></i></div>
+                                    <div>
+                                        <div class="industry-name">Wholesale</div>
+                                        <p class="industry-desc">Bulk pricing, logistics &amp; fleet</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Manufacturing -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-industry"></i></div>
+                                    <div>
+                                        <div class="industry-name">Manufacturing</div>
+                                        <p class="industry-desc">BOM, cost tracking &amp; work centers</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Construction -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-building"></i></div>
+                                    <div>
+                                        <div class="industry-name">Construction</div>
+                                        <p class="industry-desc">Project budget &amp; material controls</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Education -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-graduation-cap"></i></div>
+                                    <div>
+                                        <div class="industry-name">Education</div>
+                                        <p class="industry-desc">Student enrollment &amp; tuition billing</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Healthcare -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-heartbeat"></i></div>
+                                    <div>
+                                        <div class="industry-name">Healthcare</div>
+                                        <p class="industry-desc">Pharmacy, batch lots &amp; appointments</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Hospitality -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-cutlery"></i></div>
+                                    <div>
+                                        <div class="industry-name">Hospitality</div>
+                                        <p class="industry-desc">Restaurants, hotels &amp; kitchen display</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Logistics -->
+                            <div class="col-md-6 col-lg-3">
+                                <div class="nahan-industry-card">
+                                    <div class="industry-icon"><i class="fa fa-cubes"></i></div>
+                                    <div>
+                                        <div class="industry-name">Logistics</div>
+                                        <p class="industry-desc">Cross-border freight &amp; tracking</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 7. CUSTOMER JOURNEY ROADMAP -->
+                <section class="py-5 my-4">
+                    <div class="container py-4">
+                        <div class="nahan-section-header">
+                            <span class="section-eyebrow">Proven Methodology</span>
+                            <h2 class="section-title">Your ERP Implementation Journey</h2>
+                            <p class="section-subtitle">
+                                A structured 5-step roadmap ensuring zero disruption to your daily operations and high user adoption.
+                            </p>
+                        </div>
+
+                        <div class="row nahan-journey-row g-4">
+                            <!-- Step 1 -->
+                            <div class="col-md-4 col-lg">
+                                <div class="nahan-journey-step">
+                                    <div class="step-number">1</div>
+                                    <h4 class="step-title">Consultation</h4>
+                                    <p class="step-desc">Free initial assessment of your workflow, pain points, and business goals.</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="col-md-4 col-lg">
+                                <div class="nahan-journey-step">
+                                    <div class="step-number">2</div>
+                                    <h4 class="step-title">Analysis</h4>
+                                    <p class="step-desc">Detailed blueprint specification, data migration plan, and architecture design.</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="col-md-4 col-lg">
+                                <div class="nahan-journey-step">
+                                    <div class="step-number">3</div>
+                                    <h4 class="step-title">Deployment</h4>
+                                    <p class="step-desc">System configuration, TaxRIS API connection, testing, and cloud launch.</p>
+                                </div>
+                            </div>
+                            <!-- Step 4 -->
+                            <div class="col-md-6 col-lg">
+                                <div class="nahan-journey-step">
+                                    <div class="step-number">4</div>
+                                    <h4 class="step-title">Training</h4>
+                                    <p class="step-desc">Hands-on Lao-language training sessions for managers, accountants, and staff.</p>
+                                </div>
+                            </div>
+                            <!-- Step 5 -->
+                            <div class="col-md-6 col-lg">
+                                <div class="nahan-journey-step">
+                                    <div class="step-number">5</div>
+                                    <h4 class="step-title">Support</h4>
+                                    <p class="step-desc">Continuous technical maintenance, SLA guarantees, and ongoing advisory.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TESTIMONIALS SECTION -->
+                <section class="py-5 bg-white border-top border-bottom">
+                    <div class="container py-4">
+                        <div class="nahan-section-header">
+                            <span class="section-eyebrow">Client Success</span>
+                            <h2 class="section-title">Trusted by Business Leaders in Laos</h2>
+                            <p class="section-subtitle">
+                                Discover how Lao companies transformed their operations and financial control with Nahan.app.
+                            </p>
+                        </div>
+
+                        <div class="row g-4">
+                            <!-- Review 1 -->
+                            <div class="col-md-4">
+                                <div class="nahan-testimonial-card">
+                                    <div class="star-rating">★★★★★</div>
+                                    <p class="testimonial-quote">
+                                        "Nahan implemented Odoo 18 for our retail chain with 6 branches across Vientiane. 
+                                        The TaxRIS e-invoice integration alone saved our accounting team over 15 hours every week."
+                                    </p>
+                                    <div class="client-info">
+                                        <div class="client-avatar">SK</div>
+                                        <div>
+                                            <div class="client-name">Somphet Keomany</div>
+                                            <div class="client-title">Managing Director, Retail Lao Group</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Review 2 -->
+                            <div class="col-md-4">
+                                <div class="nahan-testimonial-card">
+                                    <div class="star-rating">★★★★★</div>
+                                    <p class="testimonial-quote">
+                                        "Their Lao developers truly understand our business environment. Having local support 
+                                        who can train our warehouse staff in Lao made all the difference during rollout."
+                                    </p>
+                                    <div class="client-info">
+                                        <div class="client-avatar">PV</div>
+                                        <div>
+                                            <div class="client-name">Phouthone Vongsay</div>
+                                            <div class="client-title">Operations Head, Mekong Distribution</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Review 3 -->
+                            <div class="col-md-4">
+                                <div class="nahan-testimonial-card">
+                                    <div class="star-rating">★★★★★</div>
+                                    <p class="testimonial-quote">
+                                        "As a growing startup, we needed a cost-effective ERP that could handle multi-currency accounting 
+                                        and online orders. Nahan delivered our Odoo 18 setup on schedule and within budget."
+                                    </p>
+                                    <div class="client-info">
+                                        <div class="client-avatar">TL</div>
+                                        <div>
+                                            <div class="client-name">Thipphavanh Luangrath</div>
+                                            <div class="client-title">Founder &amp; CEO, LaoTech Express</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 6. CONSULTATION FORM SECTION -->
+                <section class="py-5" id="consultation">
+                    <div class="container py-4">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-10">
+                                <div class="nahan-consultation-card">
+                                    <div class="text-center mb-4">
+                                        <span class="section-eyebrow">Get Started</span>
+                                        <h2 class="fw-bold text-dark mt-2 mb-2">Request Free Consultation</h2>
+                                        <p class="text-muted">
+                                            Speak with a certified Odoo 18 specialist in Laos. We analyze your requirements and provide a free quotation.
+                                        </p>
+                                    </div>
+
+                                    <!-- Response Notification Area -->
+                                    <div id="nahanFormResponse"></div>
+
+                                    <form id="nahanConsultationForm" method="POST" action="/consultation/submit">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        
+                                        <div class="row g-3">
+                                            <!-- Company Name -->
+                                            <div class="col-md-6">
+                                                <label class="form-label">Company Name *</label>
+                                                <input type="text" name="company_name" class="form-control" placeholder="e.g. Lao Logistics Co., Ltd" required="required"/>
+                                            </div>
+
+                                            <!-- Contact Name -->
+                                            <div class="col-md-6">
+                                                <label class="form-label">Contact Name *</label>
+                                                <input type="text" name="contact_name" class="form-control" placeholder="e.g. Somchai Phomvihane" required="required"/>
+                                            </div>
+
+                                            <!-- Phone Number -->
+                                            <div class="col-md-6">
+                                                <label class="form-label">Phone / WhatsApp *</label>
+                                                <input type="tel" name="phone" class="form-control" placeholder="e.g. +856 20 5274 6767" required="required"/>
+                                            </div>
+
+                                            <!-- Email -->
+                                            <div class="col-md-6">
+                                                <label class="form-label">Work Email *</label>
+                                                <input type="email" name="email" class="form-control" placeholder="e.g. contact@yourcompany.la" required="required"/>
+                                            </div>
+
+                                            <!-- Business Type -->
+                                            <div class="col-md-6">
+                                                <label class="form-label">Business Type</label>
+                                                <select name="business_type" class="form-select">
+                                                    <option value="">Select your industry...</option>
+                                                    <option value="retail">Retail / Supermarket</option>
+                                                    <option value="wholesale">Wholesale &amp; Distribution</option>
+                                                    <option value="manufacturing">Manufacturing / Factory</option>
+                                                    <option value="services">Services &amp; Consulting</option>
+                                                    <option value="hospitality">Hospitality / Restaurant / Hotel</option>
+                                                    <option value="construction">Construction &amp; Real Estate</option>
+                                                    <option value="education">Education &amp; Training</option>
+                                                    <option value="healthcare">Healthcare &amp; Pharmacy</option>
+                                                    <option value="logistics">Logistics &amp; Transport</option>
+                                                    <option value="other">Other / Startup</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Employee Count -->
+                                            <div class="col-md-6">
+                                                <label class="form-label">Employee Count</label>
+                                                <select name="employee_count" class="form-select">
+                                                    <option value="">Select organization size...</option>
+                                                    <option value="1-10">1 - 10 Employees</option>
+                                                    <option value="11-50">11 - 50 Employees</option>
+                                                    <option value="51-200">51 - 200 Employees</option>
+                                                    <option value="200+">200+ Employees</option>
+                                                </select>
+                                            </div>
+
+                                            <!-- Interested Services (Multi-select pills) -->
+                                            <div class="col-12">
+                                                <label class="form-label mb-2">Interested Services (Select all that apply)</label>
+                                                <div class="d-flex flex-wrap gap-2">
+                                                    <input type="checkbox" class="btn-check" id="srv_erp" name="services" value="ERP Implementation" checked="checked"/>
+                                                    <label class="service-checkbox-btn" for="srv_erp">ERP Implementation</label>
+
+                                                    <input type="checkbox" class="btn-check" id="srv_pos" name="services" value="POS Solutions"/>
+                                                    <label class="service-checkbox-btn" for="srv_pos">POS Retail</label>
+
+                                                    <input type="checkbox" class="btn-check" id="srv_taxris" name="services" value="TaxRIS API Integration" checked="checked"/>
+                                                    <label class="service-checkbox-btn" for="srv_taxris">TaxRIS API Integration</label>
+
+                                                    <input type="checkbox" class="btn-check" id="srv_acc" name="services" value="Accounting &amp; Finance"/>
+                                                    <label class="service-checkbox-btn" for="srv_acc">Accounting &amp; Lao Tax</label>
+
+                                                    <input type="checkbox" class="btn-check" id="srv_custom" name="services" value="Odoo Customization"/>
+                                                    <label class="service-checkbox-btn" for="srv_custom">Custom Odoo Modules</label>
+
+                                                    <input type="checkbox" class="btn-check" id="srv_ecom" name="services" value="eCommerce Solutions"/>
+                                                    <label class="service-checkbox-btn" for="srv_ecom">eCommerce &amp; Website</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Message / Requirements -->
+                                            <div class="col-12">
+                                                <label class="form-label">Message / Project Requirements</label>
+                                                <textarea name="message" rows="4" class="form-control" placeholder="Tell us about your current challenges, modules needed, or target timeline..."></textarea>
+                                            </div>
+
+                                            <!-- Submit Button -->
+                                            <div class="col-12 text-center mt-4">
+                                                <button type="submit" class="btn btn-nahan-primary btn-lg px-5 py-3 btn-consultation-submit shadow">
+                                                    <i class="fa fa-check-circle me-2"></i>Request Free Consultation
+                                                </button>
+                                                <p class="text-muted small mt-2">No commitment required. 100% confidential consultation.</p>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 8. FAQ SECTION -->
+                <section class="py-5 bg-white border-top border-bottom" id="faq">
+                    <div class="container py-4">
+                        <div class="nahan-section-header">
+                            <span class="section-eyebrow">Frequently Asked Questions</span>
+                            <h2 class="section-title">Everything You Need to Know About Odoo 18 in Laos</h2>
+                            <p class="section-subtitle">
+                                Clear answers to common questions about ERP adoption, Lao tax compliance, and costs.
+                            </p>
+                        </div>
+
+                        <div class="row justify-content-center">
+                            <div class="col-lg-9">
+                                <div class="accordion nahan-faq-accordion" id="nahanFaqAccordion">
+                                    <!-- Question 1 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                What is ERP?
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#nahanFaqAccordion">
+                                            <div class="accordion-body">
+                                                ERP (Enterprise Resource Planning) is centralized business management software that unifies your sales, accounting, inventory, purchasing, POS, and HR into a single database. Instead of using disparate spreadsheets and disjointed tools, your entire company operates with real-time synchronized data.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Question 2 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Why Odoo 18?
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#nahanFaqAccordion">
+                                            <div class="accordion-body">
+                                                Odoo 18 is the latest, most powerful version of the world's most versatile ERP suite. It features significant speed optimizations, enhanced multi-company accounting, an intuitive modern interface, built-in mobile capabilities, and unrivaled flexibility to customize for Lao business requirements at a fraction of the cost of legacy enterprise software.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Question 3 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingThree">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Can Odoo integrate with TaxRIS?
+                                            </button>
+                                        </h2>
+                                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#nahanFaqAccordion">
+                                            <div class="accordion-body">
+                                                Yes! Nahan.app has developed a specialized TaxRIS API connector for Odoo 18. Whenever an invoice or POS receipt is validated in Odoo, it can automatically transmit required invoice metadata to the Lao Tax Department's TaxRIS system, retrieve official QR codes and verification numbers, and print fully legal tax receipts.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Question 4 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFour">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                Is Odoo suitable for SMEs?
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#nahanFaqAccordion">
+                                            <div class="accordion-body">
+                                                Absolutely. Over 80% of Odoo users worldwide are small and medium-sized businesses. Because of its modular structure, an SME can start with just POS and Invoicing or CRM, and gradually add Inventory, Purchase, and Manufacturing as revenue grows without having to switch software.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Question 5 -->
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingFive">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                                How much does implementation cost?
+                                            </button>
+                                        </h2>
+                                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#nahanFaqAccordion">
+                                            <div class="accordion-body">
+                                                Costs depend on the number of modules, existing data volume to migrate, and customization needs. Nahan offers transparent package pricing for Lao SMEs starting from starter packages for retail/POS to comprehensive full-suite implementations. Contact us for a detailed, no-obligation quotation tailored to your exact scope.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 9. CALL TO ACTION BANNER -->
+                <div class="container">
+                    <div class="nahan-cta-banner text-center">
+                        <h2 class="cta-title">Transform Your Business with Odoo 18</h2>
+                        <p class="cta-subtitle mx-auto">
+                            Modernize your operations, automate Lao tax compliance, and unlock real-time financial transparency.
+                        </p>
+                        <div class="mt-4">
+                            <a href="#consultation" class="btn btn-nahan-primary btn-lg shadow px-5 py-3">
+                                <i class="fa fa-envelope-o me-2"></i>Contact Us Today
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <!-- Replace default Odoo brand logo in placeholder -->
+    <template id="nahan_brand_logo_override" inherit_id="website.option_header_brand_logo" name="Nahan Brand Logo Override" priority="50">
+        <xpath expr="//a[@data-name='Navbar Logo']" position="replace">
+            <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
+            <a data-name="Navbar Logo" href="/" t-attf-class="navbar-brand logo #{_link_class} d-flex align-items-center">
+                <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="comp.name or 'Nahan.app'"/>
+                <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-field="website.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="website.name"/>
+                <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 40px; width: auto;"/>
+            </a>
+        </xpath>
+    </template>
+
+    <!-- Nahan Modern SaaS Header (Desktop & Mobile) -->
+    <template id="nahan_saas_header" inherit_id="website.layout" name="Nahan Modern SaaS Header" priority="40">
+        <xpath expr="//header" position="replace">
+            <header id="top" data-anchor="true" class="o_header_standard" data-name="Header">
+                <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
+                <t t-set="raw_phone" t-value="comp.phone if comp and comp.phone else '+8562052746767'"/>
+                <t t-set="clean_digits" t-value="''.join([c for c in raw_phone if c.isdigit()])"/>
+                <t t-set="tel_digits" t-value="'+856' + clean_digits[1:] if clean_digits.startswith('020') else ('+' + clean_digits if clean_digits.startswith('856') else ('+856' + clean_digits if clean_digits.startswith('20') else '+8562052746767'))"/>
+
+                <!-- 1. DESKTOP MODERN SAAS NAVBAR -->
+                <nav class="navbar navbar-expand-lg nahan-saas-navbar d-none d-lg-block sticky-top bg-white border-bottom shadow-sm">
+                    <div class="container-fluid px-lg-4 px-xl-5">
+                        <!-- Brand Logo: auto uses company configured logo, clicks to / -->
+                        <a class="navbar-brand d-flex align-items-center me-3 me-xl-4 py-1" href="/" title="Nahan.app - ERP Odoo 18 Solutions">
+                            <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="comp.name or 'Nahan.app'"/>
+                            <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-field="website.logo" t-options="{'widget': 'image', 'style': 'max-height: 44px; width: auto;'}" role="img" t-att-aria-label="website.name"/>
+                            <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 40px; width: auto;"/>
+                        </a>
+
+                        <!-- Primary Navigation Menu (Desktop Layout) -->
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 nahan-nav-links gap-1 gap-xl-2">
+                            <li class="nav-item">
+                                <a data-nav-key="home" t-attf-class="nav-link #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" href="/">
+                                    <span t-if="'lo' in (request.context.get('lang') or '')">ໜ້າຫຼັກ</span>
+                                    <span t-else="">Home</span>
+                                </a>
+                            </li>
+
+                            <!-- Services Dropdown Menu -->
+                            <li class="nav-item dropdown nahan-services-dropdown">
+                                <a data-nav-key="services" t-attf-class="nav-link dropdown-toggle d-flex align-items-center gap-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" href="/services" id="navbarServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການ</span>
+                                    <span t-else="">Services</span>
+                                </a>
+                                <ul class="dropdown-menu shadow-lg border-0 rounded-3 py-2 m-0" aria-labelledby="navbarServicesDropdown">
+                                    <li>
+                                        <a data-nav-key="services-overview" class="dropdown-item py-2 px-3 d-flex align-items-center" href="/services">
+                                            <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-th-large"></i></span>
+                                            <div>
+                                                <div class="fw-semibold text-dark">
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການທັງໝົດ</span>
+                                                    <span t-else="">All Services</span>
+                                                </div>
+                                                <small class="text-muted">
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ພາບລວມການບໍລິການ</span>
+                                                    <span t-else="">Overview of solutions</span>
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider my-1 opacity-50"/></li>
+                                    <li>
+                                        <a data-nav-key="erp" class="dropdown-item py-2 px-3 d-flex align-items-center" href="/services#erp">
+                                            <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-cubes"></i></span>
+                                            <div>
+                                                <div class="fw-semibold text-dark">
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ໂຊລູຊັນ ERP</span>
+                                                    <span t-else="">ERP Solutions</span>
+                                                </div>
+                                                <small class="text-muted">
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕັ້ງ ແລະ ພັດທະນາ ERP</span>
+                                                    <span t-else="">Turnkey ERP implementation</span>
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a data-nav-key="api" class="dropdown-item py-2 px-3 d-flex align-items-center" href="/services#api">
+                                            <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-exchange"></i></span>
+                                            <div>
+                                                <div class="fw-semibold text-dark">
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')">ລະບົບເຊື່ອມຕໍ່ API</span>
+                                                    <span t-else="">API Integration</span>
+                                                </div>
+                                                <small class="text-muted">
+                                                    <span t-if="'lo' in (request.context.get('lang') or '')">TaxRIS, ທະນາຄານ ແລະ ລະບົບອື່ນໆ</span>
+                                                    <span t-else="">TaxRIS &amp; 3rd-party APIs</span>
+                                                </small>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="nav-item">
+                                <a data-nav-key="blog" t-attf-class="nav-link #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" href="/blog">
+                                    <span t-if="'lo' in (request.context.get('lang') or '')">ບົດຄວາມ</span>
+                                    <span t-else="">Blog</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-nav-key="about" t-attf-class="nav-link #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" href="/about-us">
+                                    <span t-if="'lo' in (request.context.get('lang') or '')">ກ່ຽວກັບພວກເຮົາ</span>
+                                    <span t-else="">About Us</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!-- Header Right: Language Switcher, Phone Number, Contact Us Button -->
+                        <div class="d-flex align-items-center gap-2 gap-xl-3 flex-shrink-0">
+                            <!-- Odoo Native Language Switcher -->
+                            <div class="nahan-lang-container">
+                                <t t-call="website.language_selector">
+                                    <t t-set="flags" t-value="True"/>
+                                    <t t-set="_btn_class" t-valuef="btn btn-sm btn-outline-light text-dark border rounded-pill px-3 py-1 shadow-none fw-medium d-flex align-items-center gap-1"/>
+                                    <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end shadow border-0 mt-1"/>
+                                </t>
+                            </div>
+
+                            <!-- Direct Click-to-Call Phone Number -->
+                            <a t-attf-href="tel:#{tel_digits}" class="nahan-phone-link d-flex align-items-center text-decoration-none px-2 py-1 rounded-pill" title="Call Nahan.app Consultant">
+                                <span class="phone-icon-circle me-2"><i class="fa fa-phone text-primary"></i></span>
+                                <span class="phone-text fw-bold text-dark">+8562052746767</span>
+                            </a>
+
+                            <!-- Contact Us Button (Primary Brand Color, Rounded, Modern SaaS) -->
+                            <a data-nav-key="contact" href="/contactus" class="btn btn-nahan-cta rounded-pill px-3 px-xl-4 py-2 fw-bold text-white shadow-sm text-decoration-none">
+                                <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕໍ່ພວກເຮົາ</span>
+                                <span t-else="">Contact Us</span>
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- 2. RESPONSIVE MOBILE SAAS NAVBAR -->
+                <nav class="navbar navbar-light nahan-saas-mobile-navbar d-block d-lg-none bg-white border-bottom sticky-top shadow-sm py-2">
+                    <div class="container-fluid px-3 d-flex justify-content-between align-items-center">
+                        <!-- Mobile Logo -->
+                        <a class="navbar-brand d-flex align-items-center py-0" href="/" title="Nahan.app">
+                            <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 36px; width: auto;'}" role="img"/>
+                            <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-field="website.logo" t-options="{'widget': 'image', 'style': 'max-height: 36px; width: auto;'}" role="img"/>
+                            <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 32px; width: auto;"/>
+                        </a>
+
+                        <!-- Mobile Hamburger Menu Button -->
+                        <button class="navbar-toggler border-0 p-2 shadow-none rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#nahanMobileDrawer" aria-controls="nahanMobileDrawer" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+
+                    <!-- Offcanvas Mobile Drawer -->
+                    <div class="offcanvas offcanvas-end nahan-mobile-drawer" tabindex="-1" id="nahanMobileDrawer" aria-labelledby="nahanMobileDrawerLabel">
+                        <div class="offcanvas-header border-bottom px-4 py-3">
+                            <div class="d-flex align-items-center">
+                                <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'style': 'max-height: 34px; width: auto;'}" role="img"/>
+                                <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 30px; width: auto;"/>
+                            </div>
+                            <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+
+                        <div class="offcanvas-body d-flex flex-column justify-content-between px-4 py-4">
+                            <!-- Mobile Menu Items -->
+                            <ul class="navbar-nav nahan-mobile-nav-list mb-4">
+                                <li class="nav-item">
+                                    <a data-nav-key="home" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" href="/">
+                                        <span t-if="'lo' in (request.context.get('lang') or '')">ໜ້າຫຼັກ</span>
+                                        <span t-else="">Home</span>
+                                    </a>
+                                </li>
+
+                                <!-- Mobile Services Accordion / Collapsible Submenu -->
+                                <li class="nav-item">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <a data-nav-key="services" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark flex-grow-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" href="/services">
+                                            <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການ</span>
+                                            <span t-else="">Services</span>
+                                        </a>
+                                        <button class="btn btn-sm text-secondary p-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#nahanMobileServicesSubmenu" aria-expanded="true" aria-controls="nahanMobileServicesSubmenu" aria-label="Toggle Services submenu">
+                                            <i class="fa fa-chevron-down small"></i>
+                                        </button>
+                                    </div>
+                                    <div class="collapse show ps-3 border-start ms-2 my-1" id="nahanMobileServicesSubmenu">
+                                        <a data-nav-key="services-overview" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services">
+                                            <i class="fa fa-th-large me-2 text-primary small"></i>
+                                            <span t-if="'lo' in (request.context.get('lang') or '')">ບໍລິການທັງໝົດ</span>
+                                            <span t-else="">All Services</span>
+                                        </a>
+                                        <a data-nav-key="erp" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services#erp">
+                                            <i class="fa fa-cubes me-2 text-primary small"></i>
+                                            <span t-if="'lo' in (request.context.get('lang') or '')">ໂຊລູຊັນ ERP</span>
+                                            <span t-else="">ERP Solutions</span>
+                                        </a>
+                                        <a data-nav-key="api" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services#api">
+                                            <i class="fa fa-exchange me-2 text-primary small"></i>
+                                            <span t-if="'lo' in (request.context.get('lang') or '')">ລະບົບເຊື່ອມຕໍ່ API</span>
+                                            <span t-else="">API Integration</span>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a data-nav-key="blog" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" href="/blog">
+                                        <span t-if="'lo' in (request.context.get('lang') or '')">ບົດຄວາມ</span>
+                                        <span t-else="">Blog</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a data-nav-key="about" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" href="/about-us">
+                                        <span t-if="'lo' in (request.context.get('lang') or '')">ກ່ຽວກັບພວກເຮົາ</span>
+                                        <span t-else="">About Us</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a data-nav-key="contact" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'contact' or '/contact' in request.httprequest.path else ''}" href="/contactus">
+                                        <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕໍ່ພວກເຮົາ</span>
+                                        <span t-else="">Contact Us</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <!-- Mobile Bottom Utility Section -->
+                            <div class="pt-3 border-top d-flex flex-column gap-3">
+                                <!-- Mobile Language Switcher -->
+                                <div class="nahan-mobile-lang w-100">
+                                    <t t-call="website.language_selector">
+                                        <t t-set="flags" t-value="True"/>
+                                        <t t-set="_btn_class" t-valuef="btn btn-outline-secondary w-100 rounded-pill py-2 d-flex align-items-center justify-content-center fw-semibold"/>
+                                        <t t-set="_dropdown_menu_class" t-valuef="w-100 shadow border-0 mt-1 text-center"/>
+                                    </t>
+                                </div>
+
+                                <!-- Mobile Direct Phone Link -->
+                                <a t-attf-href="tel:#{tel_digits}" class="btn btn-outline-primary rounded-pill py-2 fw-bold d-flex align-items-center justify-content-center gap-2 text-decoration-none">
+                                    <i class="fa fa-phone"></i>
+                                    <span>+8562052746767</span>
+                                </a>
+
+                                <!-- Mobile Contact Us Button -->
+                                <a href="/contactus" class="btn btn-nahan-cta rounded-pill py-2 fw-bold text-center text-white shadow-sm text-decoration-none">
+                                    <span t-if="'lo' in (request.context.get('lang') or '')">ຕິດຕໍ່ພວກເຮົາ</span>
+                                    <span t-else="">Contact Us</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+        </xpath>
+    </template>
+
+    <!-- Nahan Global Footer Replacement for all website pages -->
+    <template id="nahan_footer" inherit_id="website.footer_custom" name="Nahan Global Footer" priority="50">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo" t-ignore="true" t-if="not no_footer">
+                <footer class="nahan-footer">
+                    <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
+                    <div class="container">
+                        <div class="row g-5">
+                            <!-- Column 1: About Company -->
+                            <div class="col-lg-4">
+                                <span t-if="comp and comp.logo" t-field="comp.logo" t-options="{'widget': 'image', 'class': 'mb-3 footer-brand-logo', 'style': 'max-height: 48px; max-width: 180px;'}"/>
+                                <img t-else="" src="/nahan_website/static/src/img/logo.svg" t-att-alt="comp.name or 'Nahan.app'" style="height: 38px; filter: brightness(0) invert(1);" class="mb-3"/>
+                                <p class="small text-white-50">
+                                    <span t-esc="comp.name or 'Nahan'"/> is the premier ERP Odoo consulting firm in Laos. We empower SMEs and startups with high-performance Odoo 18 implementations, POS retail systems, and TaxRIS API integration.
+                                </p>
+                                <div class="d-flex gap-3 mt-3">
+                                    <a t-if="comp and comp.social_facebook" t-att-href="comp.social_facebook" class="text-white-50 fs-5" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+                                    <a t-else="" href="https://facebook.com/nahanapp" class="text-white-50 fs-5" target="_blank" rel="noopener"><i class="fa fa-facebook"></i></a>
+
+                                    <a t-if="comp and comp.social_linkedin" t-att-href="comp.social_linkedin" class="text-white-50 fs-5" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a>
+                                    <a t-else="" href="https://linkedin.com/company/nahanapp" class="text-white-50 fs-5" target="_blank" rel="noopener"><i class="fa fa-linkedin"></i></a>
+
+                                    <t t-set="raw_phone" t-value="comp.phone if comp and comp.phone else '02052746767'"/>
+                                    <t t-set="clean_digits" t-value="''.join([c for c in raw_phone if c.isdigit()])"/>
+                                    <t t-set="wa_number" t-value="'856' + clean_digits[1:] if clean_digits.startswith('020') else ('856' + clean_digits if clean_digits.startswith('20') else clean_digits)"/>
+                                    <a t-attf-href="https://wa.me/#{wa_number}" class="text-white-50 fs-5" target="_blank" rel="noopener" title="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: Services -->
+                            <div class="col-sm-6 col-lg-2">
+                                <h5 class="footer-heading">Services</h5>
+                                <ul class="footer-links">
+                                    <li><a href="/services#erp">ERP Implementation</a></li>
+                                    <li><a href="/services#customization">Odoo Customization</a></li>
+                                    <li><a href="/services#pos">POS Solutions</a></li>
+                                    <li><a href="/services#taxris">TaxRIS Integration</a></li>
+                                    <li><a href="/services#accounting">Accounting &amp; Finance</a></li>
+                                    <li><a href="/services#ecommerce">eCommerce Systems</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 3: Odoo Modules -->
+                            <div class="col-sm-6 col-lg-2">
+                                <h5 class="footer-heading">Odoo Modules</h5>
+                                <ul class="footer-links">
+                                    <li><a href="/services">Sales &amp; CRM</a></li>
+                                    <li><a href="/services">Inventory &amp; Barcode</a></li>
+                                    <li><a href="/services">Manufacturing (MRP)</a></li>
+                                    <li><a href="/services">Purchase &amp; Vendor</a></li>
+                                    <li><a href="/services">HR &amp; Lao Payroll</a></li>
+                                    <li><a href="/services">Project Management</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- Column 4: Contact Information from Company Info -->
+                            <div class="col-lg-4">
+                                <h5 class="footer-heading">Contact Information</h5>
+                                <ul class="footer-links mb-4">
+                                    <!-- Dynamic Address from Company Profile -->
+                                    <li class="d-flex align-items-start mb-2">
+                                        <i class="fa fa-map-marker text-info me-2 mt-1"></i>
+                                        <div>
+                                            <t t-if="comp and (comp.street or comp.city)">
+                                                <span t-if="comp.street" t-field="comp.street"/>
+                                                <t t-if="comp.street2">, <span t-field="comp.street2"/></t>
+                                                <t t-if="comp.city">, <span t-field="comp.city"/></t>
+                                                <t t-if="comp.state_id">, <span t-field="comp.state_id.name"/></t>
+                                                <t t-if="comp.zip"> <span t-field="comp.zip"/></t>
+                                                <t t-if="comp.country_id">, <span t-field="comp.country_id.name"/></t>
+                                            </t>
+                                            <t t-else="">
+                                                <span>Ban Vansay, Saysettha, Vientiane Capital, Laos</span>
+                                            </t>
+                                        </div>
+                                    </li>
+                                    <!-- Dynamic Phone from Company Profile -->
+                                    <li class="mb-2">
+                                        <i class="fa fa-phone text-info me-2"></i>
+                                        <a t-attf-href="tel:#{comp.phone if comp and comp.phone else '02052746767'}" class="text-white-50 text-decoration-none">
+                                            <span t-if="comp and comp.phone" t-field="comp.phone"/>
+                                            <span t-else="">02052746767</span>
+                                        </a>
+                                    </li>
+                                    <!-- Dynamic Email from Company Profile -->
+                                    <li class="mb-2">
+                                        <i class="fa fa-envelope text-info me-2"></i>
+                                        <a t-attf-href="mailto:#{comp.email if comp and comp.email else 'vorlasanedev@gmail.com'}" class="text-white-50 text-decoration-none">
+                                            <span t-if="comp and comp.email" t-field="comp.email"/>
+                                            <span t-else="">vorlasanedev@gmail.com</span>
+                                        </a>
+                                    </li>
+                                    <!-- Dynamic Tax ID / TIN from Company Profile -->
+                                    <li t-if="comp and comp.vat" class="mb-2">
+                                        <i class="fa fa-file-text-o text-info me-2"></i>
+                                        <span>Tax ID: </span>
+                                        <span t-field="comp.vat" class="text-white-50"/>
+                                    </li>
+                                    <!-- Dynamic Company Registry No (Company ID) from Company Profile -->
+                                    <li t-if="comp and comp.company_registry" class="mb-2">
+                                        <i class="fa fa-id-card-o text-info me-2"></i>
+                                        <span>Company ID: </span>
+                                        <span t-field="comp.company_registry" class="text-white-50"/>
+                                    </li>
+                                    <!-- Business Hours -->
+                                    <li class="mb-2">
+                                        <i class="fa fa-clock-o text-info me-2"></i>
+                                        <span>Mon - Fri: 8:30 AM - 5:30 PM (ICT)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="footer-bottom d-flex flex-column flex-md-row justify-content-between align-items-center">
+                            <p class="mb-0 text-white-50 small">
+                                &amp;copy; 2026 <span t-esc="comp.name if comp and comp.name else 'Nahan'"/>. All rights reserved. Powered by Odoo 18.
+                            </p>
+                            <div class="d-flex gap-3 mt-3 mt-md-0 small">
+                                <a href="/about-us" class="text-white-50 text-decoration-none">About Us</a>
+                                <span class="text-white-50">|</span>
+                                <a href="/services" class="text-white-50 text-decoration-none">Services</a>
+                                <span class="text-white-50">|</span>
+                                <a href="/contact-us" class="text-white-50 text-decoration-none">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- Floating WhatsApp Contact Button for Quick Lao Communication -->
+                <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
+                <t t-set="raw_phone" t-value="comp.phone if comp and comp.phone else '02052746767'"/>
+                <t t-set="clean_digits" t-value="''.join([c for c in raw_phone if c.isdigit()])"/>
+                <t t-set="wa_number" t-value="'856' + clean_digits[1:] if clean_digits.startswith('020') else ('856' + clean_digits if clean_digits.startswith('20') else clean_digits)"/>
+                <a t-attf-href="https://wa.me/#{wa_number if wa_number else '8562052746767'}?text=Hello%20#{comp.name if comp and comp.name else 'Nahan'},%20I%20would%20like%20to%20consult%20about%20Odoo%2018%20in%20Laos" 
+                   class="nahan-floating-chat shadow" 
+                   target="_blank" 
+                   rel="noopener"
+                   title="Chat with Lao Consultant on WhatsApp">
+                    <i class="fa fa-whatsapp fs-5"></i>
+                    <span>WhatsApp Us</span>
+                </a>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Hide default redundant Odoo copyright bar -->
+    <template id="nahan_hide_default_copyright" inherit_id="website.layout" name="Nahan Hide Default Copyright" priority="50">
+        <xpath expr="//div[hasclass('o_footer_copyright')]" position="attributes">
+            <attribute name="class" add="d-none" separator=" "/>
+        </xpath>
+    </template>
+
+</odoo>
