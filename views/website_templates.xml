@@ -1390,21 +1390,6 @@
                         </div>
                     </div>
                 </footer>
-
-                <!-- Floating WhatsApp Contact Button for Quick Lao Communication -->
-                <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
-                <t t-set="raw_phone" t-value="comp.phone if comp and comp.phone else '02052746767'"/>
-                <t t-set="clean_digits" t-value="''.join([c for c in raw_phone if c.isdigit()])"/>
-                <t t-set="wa_number" t-value="'856' + clean_digits[1:] if clean_digits.startswith('020') else ('856' + clean_digits if clean_digits.startswith('20') else clean_digits)"/>
-                <a t-attf-href="https://wa.me/#{wa_number if wa_number else '8562052746767'}?text=Hello%20#{comp.name if comp and comp.name else 'Nahan'},%20I%20would%20like%20to%20consult%20about%20Odoo%2018%20in%20Laos" 
-                   class="nahan-floating-chat shadow" 
-                   target="_blank" 
-                   rel="noopener"
-                   title="Chat with Lao Consultant on WhatsApp">
-                    <i class="fa fa-whatsapp fs-5 text-white"></i>
-                    <span class="text-white" t-if="is_lo">ຕິດຕໍ່ WhatsApp</span>
-                    <span class="text-white" t-else="">WhatsApp Us</span>
-                </a>
             </div>
         </xpath>
     </template>
