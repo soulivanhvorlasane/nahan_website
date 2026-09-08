@@ -1072,6 +1072,24 @@
                                 <span class="phone-text fw-bold text-dark">+8562052746767</span>
                             </a>
 
+                            <!-- Sign In / User Profile Dropdown -->
+                            <div class="nahan-signin-container">
+                                <ul class="navbar-nav align-items-center mb-0 list-unstyled">
+                                    <t t-call="portal.placeholder_user_sign_in">
+                                        <t t-set="_item_class" t-valuef="nav-item"/>
+                                        <t t-set="_link_class" t-valuef="btn btn-sm nahan-btn-signin rounded-pill px-3 py-1 fw-semibold d-flex align-items-center gap-1"/>
+                                    </t>
+                                    <t t-call="portal.user_dropdown">
+                                        <t t-set="_avatar" t-value="true"/>
+                                        <t t-set="_user_name" t-value="true"/>
+                                        <t t-set="_user_name_class" t-valuef="ms-1 small fw-semibold"/>
+                                        <t t-set="_item_class" t-valuef="nav-item dropdown"/>
+                                        <t t-set="_link_class" t-valuef="btn btn-sm nahan-btn-user rounded-pill px-2 px-xl-3 py-1 d-flex align-items-center gap-1"/>
+                                        <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end shadow border-0 mt-1"/>
+                                    </t>
+                                </ul>
+                            </div>
+
                             <!-- Contact Us Button (Primary Brand Color, Rounded, Modern SaaS) -->
                             <a data-nav-key="contact" t-attf-href="#{lang_prefix}/contactus" class="btn btn-nahan-cta rounded-pill px-3 px-xl-4 py-2 fw-bold text-white shadow-sm text-decoration-none">
                                 <span t-if="is_lo" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
@@ -1170,6 +1188,24 @@
 
                             <!-- Mobile Bottom Utility Section -->
                             <div class="pt-3 border-top d-flex flex-column gap-3">
+                                <!-- Mobile Sign In / User Profile Area -->
+                                <div class="nahan-mobile-signin w-100">
+                                    <ul class="navbar-nav w-100 list-unstyled mb-0">
+                                        <t t-call="portal.placeholder_user_sign_in">
+                                            <t t-set="_item_class" t-valuef="w-100"/>
+                                            <t t-set="_link_class" t-valuef="btn btn-outline-secondary w-100 rounded-pill py-2 d-flex align-items-center justify-content-center fw-semibold gap-2"/>
+                                        </t>
+                                        <t t-call="portal.user_dropdown">
+                                            <t t-set="_avatar" t-value="true"/>
+                                            <t t-set="_user_name" t-value="true"/>
+                                            <t t-set="_user_name_class" t-valuef="ms-2 fw-semibold"/>
+                                            <t t-set="_item_class" t-valuef="w-100 dropdown"/>
+                                            <t t-set="_link_class" t-valuef="btn btn-outline-secondary w-100 rounded-pill py-2 d-flex align-items-center justify-content-center fw-semibold gap-2"/>
+                                            <t t-set="_dropdown_menu_class" t-valuef="w-100 shadow border-0 mt-1 text-center"/>
+                                        </t>
+                                    </ul>
+                                </div>
+
                                 <!-- Mobile Language Switcher -->
                                 <div class="nahan-mobile-lang w-100">
                                     <t t-call="website.language_selector">
