@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initActiveNav();
     initServicesDropdownHover();
+    initBrandLogoNav();
 });
 
 /**
@@ -407,6 +408,27 @@ function initServicesDropdownHover() {
             dropdown.classList.remove('is-hovered');
             menu.classList.remove('show');
             toggle.setAttribute('aria-expanded', 'false');
+        });
+    });
+}
+
+/**
+ * 6. Brand Logo Navigation Handler
+ * Ensures clicking brand logo or header icons always navigates reliably to the active language home (/lo in Lao, / in English),
+ * resolving any default-prevention issues or event bubbling blocks.
+ */
+function initBrandLogoNav() {
+    const brandElements = document.querySelectorAll('.navbar-brand, .nahan-mobile-drawer .offcanvas-header a');
+    brandElements.forEach((brand) => {
+        brand.addEventListener('click', function (e) {
+            const href = this.getAttribute('href');
+            if (href && href !== '#' && href !== '') {
+                setTimeout(() => {
+                    if (e.defaultPrevented) {
+                        window.location.href = href;
+                    }
+                }, 50);
+            }
         });
     });
 }

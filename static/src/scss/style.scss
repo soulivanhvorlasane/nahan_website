@@ -45,15 +45,18 @@ html[lang*="lo"],
     z-index: 1030;
 
     .navbar-brand {
+        position: relative;
+        z-index: 5;
         cursor: pointer !important;
+        pointer-events: auto !important;
         transition: transform 0.2s ease;
         &:hover {
             transform: scale(1.02);
         }
 
-        img {
+        *, img, svg {
             cursor: pointer !important;
-            pointer-events: auto;
+            pointer-events: auto !important;
         }
     }
 
@@ -333,10 +336,13 @@ html[lang*="lo"],
 .nahan-saas-mobile-navbar {
     z-index: 1030;
     .navbar-brand {
+        position: relative;
+        z-index: 5;
         cursor: pointer !important;
-        img {
+        pointer-events: auto !important;
+        *, img, svg {
             cursor: pointer !important;
-            pointer-events: auto;
+            pointer-events: auto !important;
         }
     }
     .navbar-toggler {
@@ -352,10 +358,13 @@ html[lang*="lo"],
     width: 310px !important;
     .offcanvas-header {
         a, .navbar-brand {
+            position: relative;
+            z-index: 5;
             cursor: pointer !important;
-            img {
+            pointer-events: auto !important;
+            *, img, svg {
                 cursor: pointer !important;
-                pointer-events: auto;
+                pointer-events: auto !important;
             }
         }
     }

@@ -939,7 +939,9 @@
     <template id="nahan_brand_logo_override" inherit_id="website.option_header_brand_logo" name="Nahan Brand Logo Override" priority="50">
         <xpath expr="//a[@data-name='Navbar Logo']" position="replace">
             <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
-            <a data-name="Navbar Logo" href="/" t-attf-class="navbar-brand logo #{_link_class} d-flex align-items-center" title="Nahan.app - ERP Odoo 18 Solutions">
+            <t t-set="is_lo" t-value="'lo' in (request.context.get('lang') or '') or (request.httprequest and request.httprequest.path.startswith('/lo'))"/>
+            <t t-set="home_url" t-value="'/lo' if is_lo else '/'"/>
+            <a data-name="Navbar Logo" t-att-href="home_url" t-attf-class="navbar-brand logo #{_link_class} d-flex align-items-center" title="Nahan.app - ERP Odoo 18 Solutions">
                 <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 44px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
                 <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 44px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                 <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 40px; width: auto;"/>
@@ -950,17 +952,21 @@
     <!-- Nahan Modern SaaS Header (Desktop & Mobile) -->
     <template id="nahan_saas_header" inherit_id="website.layout" name="Nahan Modern SaaS Header" priority="40">
         <xpath expr="//header" position="replace">
-            <header id="top" data-anchor="true" t-attf-class="o_header_standard #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}" data-name="Header">
+            <t t-set="is_lo" t-value="'lo' in (request.context.get('lang') or '') or (request.httprequest and request.httprequest.path.startswith('/lo'))"/>
+            <header id="top" data-anchor="true" t-attf-class="o_header_standard #{'nahan-lang-lo' if is_lo else 'nahan-lang-en'}" data-name="Header">
                 <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
+                <t t-set="is_lo" t-value="'lo' in (request.context.get('lang') or '') or (request.httprequest and request.httprequest.path.startswith('/lo'))"/>
+                <t t-set="lang_prefix" t-value="'/lo' if is_lo else ''"/>
+                <t t-set="home_url" t-value="'/lo' if is_lo else '/'"/>
                 <t t-set="raw_phone" t-value="comp.phone if comp and comp.phone else '+8562052746767'"/>
                 <t t-set="clean_digits" t-value="''.join([c for c in raw_phone if c.isdigit()])"/>
                 <t t-set="tel_digits" t-value="'+856' + clean_digits[1:] if clean_digits.startswith('020') else ('+' + clean_digits if clean_digits.startswith('856') else ('+856' + clean_digits if clean_digits.startswith('20') else '+8562052746767'))"/>
 
                 <!-- 1. DESKTOP MODERN SAAS NAVBAR -->
-                <nav t-attf-class="navbar navbar-expand-lg nahan-saas-navbar d-none d-lg-block sticky-top bg-white border-bottom shadow-sm #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}">
+                <nav t-attf-class="navbar navbar-expand-lg nahan-saas-navbar d-none d-lg-block sticky-top bg-white border-bottom shadow-sm #{'nahan-lang-lo' if is_lo else 'nahan-lang-en'}">
                     <div class="container-fluid px-lg-4 px-xl-5">
-                        <!-- Brand Logo: auto uses company configured logo, clicks to / -->
-                        <a class="navbar-brand d-flex align-items-center me-3 me-xl-4 py-1" href="/" title="Nahan.app - ERP Odoo 18 Solutions">
+                        <!-- Brand Logo: auto uses company configured logo, clicks to home_url (/lo in Lao, / in English) -->
+                        <a class="navbar-brand d-flex align-items-center me-3 me-xl-4 py-1" t-att-href="home_url" title="Nahan.app - ERP Odoo 18 Solutions">
                             <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 44px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
                             <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 44px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                             <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 40px; width: auto;"/>
@@ -969,29 +975,29 @@
                         <!-- Primary Navigation Menu (Desktop Layout) -->
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0 nahan-nav-links gap-1 gap-xl-2">
                             <li class="nav-item">
-                                <a data-nav-key="home" t-attf-class="nav-link #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" href="/">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໜ້າຫຼັກ</span>
+                                <a data-nav-key="home" t-attf-class="nav-link #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" t-att-href="home_url">
+                                    <span t-if="is_lo" class="lao-text">ໜ້າຫຼັກ</span>
                                     <span t-else="" class="en-text">Home</span>
                                 </a>
                             </li>
 
                             <!-- Services Dropdown Menu -->
                             <li class="nav-item dropdown nahan-services-dropdown">
-                                <a data-nav-key="services" t-attf-class="nav-link dropdown-toggle d-flex align-items-center gap-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" href="/services" id="navbarServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການ</span>
+                                <a data-nav-key="services" t-attf-class="nav-link dropdown-toggle d-flex align-items-center gap-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" t-attf-href="#{lang_prefix}/services" id="navbarServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span t-if="is_lo" class="lao-text">ບໍລິການ</span>
                                     <span t-else="" class="en-text">Services</span>
                                 </a>
                                 <ul class="dropdown-menu shadow-lg border-0 rounded-3 py-2 m-0" aria-labelledby="navbarServicesDropdown">
                                     <li>
-                                        <a data-nav-key="services-overview" class="dropdown-item py-2 px-3 d-flex align-items-center" href="/services">
+                                        <a data-nav-key="services-overview" class="dropdown-item py-2 px-3 d-flex align-items-center" t-attf-href="#{lang_prefix}/services">
                                             <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-th-large"></i></span>
                                             <div>
                                                 <div class="fw-semibold text-dark">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການທັງໝົດ</span>
+                                                    <span t-if="is_lo" class="lao-text">ບໍລິການທັງໝົດ</span>
                                                     <span t-else="" class="en-text">All Services</span>
                                                 </div>
                                                 <small class="text-muted">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ພາບລວມການບໍລິການ</span>
+                                                    <span t-if="is_lo" class="lao-text">ພາບລວມການບໍລິການ</span>
                                                     <span t-else="" class="en-text">Overview of solutions</span>
                                                 </small>
                                             </div>
@@ -999,30 +1005,30 @@
                                     </li>
                                     <li><hr class="dropdown-divider my-1 opacity-50"/></li>
                                     <li>
-                                        <a data-nav-key="erp" class="dropdown-item py-2 px-3 d-flex align-items-center" href="/services#erp">
+                                        <a data-nav-key="erp" class="dropdown-item py-2 px-3 d-flex align-items-center" t-attf-href="#{lang_prefix}/services#erp">
                                             <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-cubes"></i></span>
                                             <div>
                                                 <div class="fw-semibold text-dark">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໂຊລູຊັນ ERP</span>
+                                                    <span t-if="is_lo" class="lao-text">ໂຊລູຊັນ ERP</span>
                                                     <span t-else="" class="en-text">ERP Solutions</span>
                                                 </div>
                                                 <small class="text-muted">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕັ້ງ ແລະ ພັດທະນາ ERP</span>
+                                                    <span t-if="is_lo" class="lao-text">ຕິດຕັ້ງ ແລະ ພັດທະນາ ERP</span>
                                                     <span t-else="" class="en-text">Turnkey ERP implementation</span>
                                                 </small>
                                             </div>
                                         </a>
                                     </li>
                                     <li>
-                                        <a data-nav-key="api" class="dropdown-item py-2 px-3 d-flex align-items-center" href="/services#api">
+                                        <a data-nav-key="api" class="dropdown-item py-2 px-3 d-flex align-items-center" t-attf-href="#{lang_prefix}/services#api">
                                             <span class="dropdown-icon-circle me-3 text-primary"><i class="fa fa-exchange"></i></span>
                                             <div>
                                                 <div class="fw-semibold text-dark">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ລະບົບເຊື່ອມຕໍ່ API</span>
+                                                    <span t-if="is_lo" class="lao-text">ລະບົບເຊື່ອມຕໍ່ API</span>
                                                     <span t-else="" class="en-text">API Integration</span>
                                                 </div>
                                                 <small class="text-muted">
-                                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">TaxRIS, ທະນາຄານ ແລະ ລະບົບອື່ນໆ</span>
+                                                    <span t-if="is_lo" class="lao-text">TaxRIS, ທະນາຄານ ແລະ ລະບົບອື່ນໆ</span>
                                                     <span t-else="" class="en-text">TaxRIS &amp; 3rd-party APIs</span>
                                                 </small>
                                             </div>
@@ -1032,14 +1038,14 @@
                             </li>
 
                             <li class="nav-item">
-                                <a data-nav-key="blog" t-attf-class="nav-link #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" href="/blog">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບົດຄວາມ</span>
+                                <a data-nav-key="blog" t-attf-class="nav-link #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" t-attf-href="#{lang_prefix}/blog">
+                                    <span t-if="is_lo" class="lao-text">ບົດຄວາມ</span>
                                     <span t-else="" class="en-text">Blog</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a data-nav-key="about" t-attf-class="nav-link #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" href="/about-us">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ກ່ຽວກັບພວກເຮົາ</span>
+                                <a data-nav-key="about" t-attf-class="nav-link #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" t-attf-href="#{lang_prefix}/about-us">
+                                    <span t-if="is_lo" class="lao-text">ກ່ຽວກັບພວກເຮົາ</span>
                                     <span t-else="" class="en-text">About Us</span>
                                 </a>
                             </li>
@@ -1063,8 +1069,8 @@
                             </a>
 
                             <!-- Contact Us Button (Primary Brand Color, Rounded, Modern SaaS) -->
-                            <a data-nav-key="contact" href="/contactus" class="btn btn-nahan-cta rounded-pill px-3 px-xl-4 py-2 fw-bold text-white shadow-sm text-decoration-none">
-                                <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
+                            <a data-nav-key="contact" t-attf-href="#{lang_prefix}/contactus" class="btn btn-nahan-cta rounded-pill px-3 px-xl-4 py-2 fw-bold text-white shadow-sm text-decoration-none">
+                                <span t-if="is_lo" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
                                 <span t-else="" class="en-text">Contact Us</span>
                             </a>
                         </div>
@@ -1072,10 +1078,10 @@
                 </nav>
 
                 <!-- 2. RESPONSIVE MOBILE SAAS NAVBAR -->
-                <nav t-attf-class="navbar navbar-light nahan-saas-mobile-navbar d-block d-lg-none bg-white border-bottom sticky-top shadow-sm py-2 #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}">
+                <nav t-attf-class="navbar navbar-light nahan-saas-mobile-navbar d-block d-lg-none bg-white border-bottom sticky-top shadow-sm py-2 #{'nahan-lang-lo' if is_lo else 'nahan-lang-en'}">
                     <div class="container-fluid px-3 d-flex justify-content-between align-items-center">
                         <!-- Mobile Logo -->
-                        <a class="navbar-brand d-flex align-items-center py-0" href="/" title="Nahan.app">
+                        <a class="navbar-brand d-flex align-items-center py-0" t-att-href="home_url" title="Nahan.app">
                             <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 36px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
                             <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 36px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                             <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 32px; width: auto;"/>
@@ -1088,9 +1094,9 @@
                     </div>
 
                     <!-- Offcanvas Mobile Drawer -->
-                    <div t-attf-class="offcanvas offcanvas-end nahan-mobile-drawer #{'nahan-lang-lo' if 'lo' in (request.context.get('lang') or '') else 'nahan-lang-en'}" tabindex="-1" id="nahanMobileDrawer" aria-labelledby="nahanMobileDrawerLabel">
+                    <div t-attf-class="offcanvas offcanvas-end nahan-mobile-drawer #{'nahan-lang-lo' if is_lo else 'nahan-lang-en'}" tabindex="-1" id="nahanMobileDrawer" aria-labelledby="nahanMobileDrawerLabel">
                         <div class="offcanvas-header border-bottom px-4 py-3">
-                            <a href="/" class="d-flex align-items-center text-decoration-none" title="Nahan.app">
+                            <a t-att-href="home_url" class="d-flex align-items-center text-decoration-none" title="Nahan.app">
                                 <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" style="max-height: 34px; width: auto;" t-att-alt="comp.name or 'Nahan.app'"/>
                                 <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" style="max-height: 34px; width: auto;" t-att-alt="website.name or 'Nahan.app'"/>
                                 <img t-else="" src="/nahan_website/static/src/img/logo.svg" alt="Nahan.app" style="max-height: 30px; width: auto;"/>
@@ -1102,8 +1108,8 @@
                             <!-- Mobile Menu Items -->
                             <ul class="navbar-nav nahan-mobile-nav-list mb-4">
                                 <li class="nav-item">
-                                    <a data-nav-key="home" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" href="/">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໜ້າຫຼັກ</span>
+                                    <a data-nav-key="home" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'home' or request.httprequest.path in ['/', '/lo', '/lo/'] else ''}" t-att-href="home_url">
+                                        <span t-if="is_lo" class="lao-text">ໜ້າຫຼັກ</span>
                                         <span t-else="" class="en-text">Home</span>
                                     </a>
                                 </li>
@@ -1111,8 +1117,8 @@
                                 <!-- Mobile Services Accordion / Collapsible Submenu -->
                                 <li class="nav-item">
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <a data-nav-key="services" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark flex-grow-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" href="/services">
-                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການ</span>
+                                        <a data-nav-key="services" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark flex-grow-1 #{'active' if active_menu == 'services' or request.httprequest.path.rstrip('/').endswith('/services') else ''}" t-attf-href="#{lang_prefix}/services">
+                                            <span t-if="is_lo" class="lao-text">ບໍລິການ</span>
                                             <span t-else="" class="en-text">Services</span>
                                         </a>
                                         <button class="btn btn-sm text-secondary p-2 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#nahanMobileServicesSubmenu" aria-expanded="true" aria-controls="nahanMobileServicesSubmenu" aria-label="Toggle Services submenu">
@@ -1120,39 +1126,39 @@
                                         </button>
                                     </div>
                                     <div class="collapse show ps-3 border-start ms-2 my-1" id="nahanMobileServicesSubmenu">
-                                        <a data-nav-key="services-overview" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services">
+                                        <a data-nav-key="services-overview" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" t-attf-href="#{lang_prefix}/services">
                                             <i class="fa fa-th-large me-2 text-primary small"></i>
-                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບໍລິການທັງໝົດ</span>
+                                            <span t-if="is_lo" class="lao-text">ບໍລິການທັງໝົດ</span>
                                             <span t-else="" class="en-text">All Services</span>
                                         </a>
-                                        <a data-nav-key="erp" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services#erp">
+                                        <a data-nav-key="erp" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" t-attf-href="#{lang_prefix}/services#erp">
                                             <i class="fa fa-cubes me-2 text-primary small"></i>
-                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ໂຊລູຊັນ ERP</span>
+                                            <span t-if="is_lo" class="lao-text">ໂຊລູຊັນ ERP</span>
                                             <span t-else="" class="en-text">ERP Solutions</span>
                                         </a>
-                                        <a data-nav-key="api" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" href="/services#api">
+                                        <a data-nav-key="api" class="nav-link py-1 fs-6 text-muted d-flex align-items-center" t-attf-href="#{lang_prefix}/services#api">
                                             <i class="fa fa-exchange me-2 text-primary small"></i>
-                                            <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ລະບົບເຊື່ອມຕໍ່ API</span>
+                                            <span t-if="is_lo" class="lao-text">ລະບົບເຊື່ອມຕໍ່ API</span>
                                             <span t-else="" class="en-text">API Integration</span>
                                         </a>
                                     </div>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a data-nav-key="blog" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" href="/blog">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ບົດຄວາມ</span>
+                                    <a data-nav-key="blog" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'blog' or '/blog' in request.httprequest.path else ''}" t-attf-href="#{lang_prefix}/blog">
+                                        <span t-if="is_lo" class="lao-text">ບົດຄວາມ</span>
                                         <span t-else="" class="en-text">Blog</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-nav-key="about" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" href="/about-us">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ກ່ຽວກັບພວກເຮົາ</span>
+                                    <a data-nav-key="about" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'about' or '/about' in request.httprequest.path else ''}" t-attf-href="#{lang_prefix}/about-us">
+                                        <span t-if="is_lo" class="lao-text">ກ່ຽວກັບພວກເຮົາ</span>
                                         <span t-else="" class="en-text">About Us</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a data-nav-key="contact" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'contact' or '/contact' in request.httprequest.path else ''}" href="/contactus">
-                                        <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
+                                    <a data-nav-key="contact" t-attf-class="nav-link py-2 fs-6 fw-semibold text-dark #{'active' if active_menu == 'contact' or '/contact' in request.httprequest.path else ''}" t-attf-href="#{lang_prefix}/contactus">
+                                        <span t-if="is_lo" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
                                         <span t-else="" class="en-text">Contact Us</span>
                                     </a>
                                 </li>
@@ -1176,8 +1182,8 @@
                                 </a>
 
                                 <!-- Mobile Contact Us Button -->
-                                <a href="/contactus" class="btn btn-nahan-cta rounded-pill py-2 fw-bold text-center text-white shadow-sm text-decoration-none">
-                                    <span t-if="'lo' in (request.context.get('lang') or '')" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
+                                <a t-attf-href="#{lang_prefix}/contactus" class="btn btn-nahan-cta rounded-pill py-2 fw-bold text-center text-white shadow-sm text-decoration-none">
+                                    <span t-if="is_lo" class="lao-text">ຕິດຕໍ່ພວກເຮົາ</span>
                                     <span t-else="" class="en-text">Contact Us</span>
                                 </a>
                             </div>
@@ -1194,11 +1200,14 @@
             <div id="footer" class="oe_structure oe_structure_solo" t-ignore="true" t-if="not no_footer">
                 <footer class="nahan-footer">
                     <t t-set="comp" t-value="res_company or (website and website.company_id) or request.env.company"/>
+                    <t t-set="is_lo" t-value="'lo' in (request.context.get('lang') or '') or (request.httprequest and request.httprequest.path.startswith('/lo'))"/>
+                    <t t-set="lang_prefix" t-value="'/lo' if is_lo else ''"/>
+                    <t t-set="home_url" t-value="'/lo' if is_lo else '/'"/>
                     <div class="container">
                         <div class="row g-5">
                             <!-- Column 1: About Company -->
                             <div class="col-lg-4">
-                                <a href="/" class="d-inline-block text-decoration-none" title="Nahan.app">
+                                <a t-att-href="home_url" class="d-inline-block text-decoration-none" title="Nahan.app">
                                     <img t-if="comp and comp.logo" t-att-src="'/web/image/res.company/%s/logo' % comp.id" class="mb-3 footer-brand-logo" style="max-height: 48px; max-width: 180px;" t-att-alt="comp.name or 'Nahan.app'"/>
                                     <img t-elif="website and website.logo and not ('YourLogo' in str(website.logo))" t-att-src="'/web/image/website/%s/logo' % website.id" class="mb-3 footer-brand-logo" style="max-height: 48px; max-width: 180px;" t-att-alt="website.name or 'Nahan.app'"/>
                                     <img t-else="" src="/nahan_website/static/src/img/logo.svg" t-att-alt="comp.name or 'Nahan.app'" style="height: 38px; filter: brightness(0) invert(1);" class="mb-3"/>
@@ -1224,12 +1233,12 @@
                             <div class="col-sm-6 col-lg-2">
                                 <h5 class="footer-heading">Services</h5>
                                 <ul class="footer-links">
-                                    <li><a href="/services#erp">ERP Implementation</a></li>
-                                    <li><a href="/services#customization">Odoo Customization</a></li>
-                                    <li><a href="/services#pos">POS Solutions</a></li>
-                                    <li><a href="/services#taxris">TaxRIS Integration</a></li>
-                                    <li><a href="/services#accounting">Accounting &amp; Finance</a></li>
-                                    <li><a href="/services#ecommerce">eCommerce Systems</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services#erp">ERP Implementation</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services#customization">Odoo Customization</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services#pos">POS Solutions</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services#taxris">TaxRIS Integration</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services#accounting">Accounting &amp; Finance</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services#ecommerce">eCommerce Systems</a></li>
                                 </ul>
                             </div>
 
@@ -1237,12 +1246,12 @@
                             <div class="col-sm-6 col-lg-2">
                                 <h5 class="footer-heading">Odoo Modules</h5>
                                 <ul class="footer-links">
-                                    <li><a href="/services">Sales &amp; CRM</a></li>
-                                    <li><a href="/services">Inventory &amp; Barcode</a></li>
-                                    <li><a href="/services">Manufacturing (MRP)</a></li>
-                                    <li><a href="/services">Purchase &amp; Vendor</a></li>
-                                    <li><a href="/services">HR &amp; Lao Payroll</a></li>
-                                    <li><a href="/services">Project Management</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services">Sales &amp; CRM</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services">Inventory &amp; Barcode</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services">Manufacturing (MRP)</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services">Purchase &amp; Vendor</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services">HR &amp; Lao Payroll</a></li>
+                                    <li><a t-attf-href="#{lang_prefix}/services">Project Management</a></li>
                                 </ul>
                             </div>
 
