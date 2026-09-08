@@ -75,14 +75,14 @@
             <a t-attf-href="/website/lang/en_US?r=#{request.httprequest.path}" 
                t-attf-class="lang-option #{'active' if request.context.get('lang') in ['en_US', 'en'] else ''}"
                title="English (US)">
-                <img src="/nahan_website/static/src/img/us_flag.svg" alt="English"/>
+                <img src="/nahan_website/static/src/img/us_flag.svg" alt="English" width="20" height="14" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block;"/>
                 <span>EN</span>
             </a>
             <!-- Lao Option -->
             <a t-attf-href="/website/lang/lo_LA?r=#{request.httprequest.path}" 
                t-attf-class="lang-option #{'active' if request.context.get('lang') in ['lo_LA', 'lo'] else ''}"
                title="Lao (ພາສາລາວ)">
-                <img src="/nahan_website/static/src/img/lao_flag.svg" alt="ພາສາລາວ"/>
+                <img src="/nahan_website/static/src/img/lao_flag.svg" alt="ພາສາລາວ" width="20" height="14" style="width: 20px; height: 14px; object-fit: cover; border-radius: 2px; display: inline-block;"/>
                 <span>ລາວ</span>
             </a>
         </div>
