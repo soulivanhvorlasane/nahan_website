@@ -661,9 +661,9 @@
                                         The TaxRIS e-invoice integration alone saved our accounting team over 15 hours every week."
                                     </p>
                                     <div class="client-info">
-                                        <div class="client-avatar">SK</div>
+                                        <div class="client-avatar">BA</div>
                                         <div>
-                                            <div class="client-name">Somphet Keomany</div>
+                                            <div class="client-name">Bouasavanh Aneka</div>
                                             <div class="client-title">Managing Director, Retail Lao Group</div>
                                         </div>
                                     </div>
@@ -678,9 +678,9 @@
                                         who can train our warehouse staff in Lao made all the difference during rollout."
                                     </p>
                                     <div class="client-info">
-                                        <div class="client-avatar">PV</div>
+                                        <div class="client-avatar">CA</div>
                                         <div>
-                                            <div class="client-name">Phouthone Vongsay</div>
+                                            <div class="client-name">Chindasavanh Aneka</div>
                                             <div class="client-title">Operations Head, Mekong Distribution</div>
                                         </div>
                                     </div>
@@ -695,10 +695,27 @@
                                         and online orders. Nahan delivered our Odoo 18 setup on schedule and within budget."
                                     </p>
                                     <div class="client-info">
-                                        <div class="client-avatar">TL</div>
+                                        <div class="client-avatar">SV</div>
                                         <div>
-                                            <div class="client-name">Thipphavanh Luangrath</div>
+                                            <div class="client-name">Soulivanh Vorlasane</div>
                                             <div class="client-title">Founder &amp; CEO, LaoTech Express</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Review 4 -->
+                            <div class="col-md-4">
+                                <div class="nahan-testimonial-card">
+                                    <div class="star-rating">★★★★★</div>
+                                    <p class="testimonial-quote">
+                                        "As a growing startup, we needed a cost-effective ERP that could handle multi-currency accounting
+                                        and online orders. Nahan delivered our Odoo 18 setup on schedule and within budget."
+                                    </p>
+                                    <div class="client-info">
+                                        <div class="client-avatar">AA</div>
+                                        <div>
+                                            <div class="client-name">Anuntavan Aneka</div>
+                                            <div class="client-title">Co-Founder &amp; CEO, LaoTech Express</div>
                                         </div>
                                     </div>
                                 </div>
